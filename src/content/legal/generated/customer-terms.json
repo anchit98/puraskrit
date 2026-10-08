@@ -1,0 +1,90 @@
+{
+  "slug": "customer-terms",
+  "source": "BuyerApp_Terms_Conditions.docx",
+  "title": "PURASKRIT CUSTOMER TERMS & CONDITIONS",
+  "meta": [
+    "Issued by: Asraubh Private Limited",
+    "Effective Date: 10/03/2026 | Version: 1.0"
+  ],
+  "effective": "Effective Date: 10/03/2026 | Version: 1.0",
+  "toc": [
+    {
+      "id": "1-company-information",
+      "text": "1. Company Information"
+    },
+    {
+      "id": "2-document-hierarchy",
+      "text": "2. Document Hierarchy"
+    },
+    {
+      "id": "3-definitions",
+      "text": "3. Definitions"
+    },
+    {
+      "id": "4-acceptance-of-terms",
+      "text": "4. Acceptance of Terms"
+    },
+    {
+      "id": "5-eligibility",
+      "text": "5. Eligibility"
+    },
+    {
+      "id": "6-platform-nature-and-role",
+      "text": "6. Platform Nature and Role"
+    },
+    {
+      "id": "7-intellectual-property",
+      "text": "7. Intellectual Property"
+    },
+    {
+      "id": "8-loyalty-program-milestones",
+      "text": "8. Loyalty Program & Milestones"
+    },
+    {
+      "id": "9-reward-redemption",
+      "text": "9. Reward Redemption"
+    },
+    {
+      "id": "10-merchant-exit-or-closure",
+      "text": "10. Merchant Exit or Closure"
+    },
+    {
+      "id": "11-refund-dispute-resolution",
+      "text": "11. Refund & Dispute Resolution"
+    },
+    {
+      "id": "12-privacy-data-rights",
+      "text": "12. Privacy & Data Rights"
+    },
+    {
+      "id": "13-limitation-of-liability",
+      "text": "13. Limitation of Liability"
+    },
+    {
+      "id": "14-termination-of-account",
+      "text": "14. Termination of Account"
+    },
+    {
+      "id": "15-dispute-resolution-arbitration",
+      "text": "15. Dispute Resolution & Arbitration"
+    },
+    {
+      "id": "16-force-majeure",
+      "text": "16. Force Majeure"
+    },
+    {
+      "id": "17-amendments",
+      "text": "17. Amendments"
+    },
+    {
+      "id": "18-severability",
+      "text": "18. Severability"
+    },
+    {
+      "id": "19-governing-law-jurisdiction",
+      "text": "19. Governing Law & Jurisdiction"
+    }
+  ],
+  "grievance": null,
+  "html": "<h2 id=\"1-company-information\">1. Company Information</h2><ul><li>Company Name: Asraubh Private Limited</li><li>Registered Location: Bengaluru, Karnataka, India</li><li>Contact Email: support@puraskrit.com</li><li>Jurisdiction: Bengaluru, India</li></ul><h2 id=\"2-document-hierarchy\">2. Document Hierarchy</h2><p>These Terms &amp; Conditions, together with the Customer Privacy Policy and the Customer Terms of Use, constitute the entire agreement between you and Asraubh Private Limited governing your use of the Puraskrit customer application. In the event of any inconsistency or conflict between these documents, the following order of precedence shall apply:</p><ul><li>1st: Customer Terms &amp; Conditions (this document)</li><li>2nd: Customer Privacy Policy</li><li>3rd: Customer Terms of Use</li></ul><p>These documents must be read together. This document does not replace or supersede the Customer Privacy Policy with respect to data protection rights and obligations, which are governed by the Privacy Policy in accordance with applicable law.</p><h2 id=\"3-definitions\">3. Definitions</h2><ul><li>Platform: The Puraskrit mobile application and associated merchant software.</li><li>Company / Puraskrit: Asraubh Private Limited.</li><li>Merchant: A business registered on the platform offering services to customers.</li><li>Customer / Data Principal: An individual using the platform to track loyalty benefits.</li><li>Services: Any service provided directly by merchants to customers.</li><li>Loyalty Program: Merchant-defined milestone-based reward systems tracked via the platform.</li><li>Milestone: A defined, achievable target based on transaction frequency or spending thresholds.</li></ul><h2 id=\"4-acceptance-of-terms\">4. Acceptance of Terms</h2><p>By downloading, registering, or using the Puraskrit customer application, you agree to be bound by these Terms &amp; Conditions. If you do not agree to these terms, you may not use the Platform.</p><p>For any changes to terms that materially affect how your personal data is processed, a fresh consent screen will be presented to you within the app. Such changes take effect only upon your explicit re-acceptance. Continued use of the app after a non-material update (for example, a clarification or formatting change) following in-app notification constitutes acceptance of that update.</p><h2 id=\"5-eligibility\">5. Eligibility</h2><ul><li>You must be at least 18 years of age to use the Platform.</li><li>You must create an account using accurate personal information, specifically your name and a valid phone number.</li><li>You are prohibited from creating fraudulent, duplicate, or automated accounts.</li><li>You are responsible for maintaining the security of your login credentials. Puraskrit is not liable for losses arising from unauthorised access due to your failure to secure your credentials.</li></ul><p>If Puraskrit discovers that a user is under the age of 18, their account will be immediately terminated and their data deleted in accordance with the Customer Privacy Policy.</p><h2 id=\"6-platform-nature-and-role\">6. Platform Nature and Role</h2><p>Puraskrit functions as a digital intermediary allowing customers to discover participating merchants and track loyalty progress. Puraskrit provides the software infrastructure but does not:</p><ul><li>Control merchant pricing, service delivery, or the quality of services rendered by merchants.</li><li>Act as a party to any transaction between you and a merchant.</li><li>Guarantee the availability, quality, or suitability of merchant services.</li></ul><p>Puraskrit is not a payment processor. No financial transactions between you and merchants are processed through the platform at this stage.</p><h2 id=\"7-intellectual-property\">7. Intellectual Property</h2><p>All platform software, systems, algorithms, branding, and content developed by Asraubh Private Limited are the exclusive intellectual property of Asraubh Private Limited. You may not copy, distribute, reverse engineer, or create derivative works of the platform.</p><p>With respect to any content, you upload to the platform (for example, a profile photo), you grant Puraskrit a limited, non-exclusive, royalty-free licence to store and display such content solely for the purpose of operating your account. You retain ownership of any content you upload. Puraskrit will not use your uploaded content for commercial or promotional purposes without your explicit consent.</p><h2 id=\"8-loyalty-program-milestones\">8. Loyalty Program &amp; Milestones</h2><h3 id=\"8-1-milestone-system\">8.1 Milestone System</h3><p>The Platform allows you to track and earn rewards through milestone-based loyalty programs set by individual merchants. Points-based reward systems are not supported on the platform.</p><h3 id=\"8-2-earning-rewards\">8.2 Earning Rewards</h3><p>A milestone is a defined target based on transaction frequency or spending thresholds. Upon reaching a milestone, you may be eligible for rewards such as discounts, free services, complimentary add-ons, or special benefits as defined by the merchant.</p><h3 id=\"8-3-honest-use\">8.3 Honest Use</h3><p>You agree to use the loyalty programs honestly. You are prohibited from submitting fake transactions, manipulating your progress, or exploiting the system using automated tools or scripts.</p><h2 id=\"9-reward-redemption\">9. Reward Redemption</h2><p>Rewards earned on Puraskrit are redeemable only with the specific issuing merchant. Puraskrit does not guarantee the availability of any specific reward, as inventory and fulfilment are the sole responsibility of the merchant.</p><p>Puraskrit is not financially liable for the monetary value of any unredeemed merchant reward, except as expressly provided in Section 10 below.</p><h2 id=\"10-merchant-exit-or-closure\">10. Merchant Exit or Closure</h2><p>If a participating merchant intends to exit the platform or close their physical business, they are contractually required to provide a minimum of 30 days' advance notice to Puraskrit and their affected customers. During this notice window, the merchant must allow you to redeem all outstanding rewards.</p><p>If redemption becomes impossible due to sudden closure without notice, Puraskrit may attempt to migrate your affected milestones to another merchant offering similar services. If no suitable merchant is available for migration, you have the right to seek compensation from the original merchant for the unredeemed value of your earned milestones. Puraskrit will use reasonable efforts to facilitate this but does not itself hold or guarantee the financial value of these rewards.</p><p>Puraskrit will notify you through the app if a merchant you have active milestones with announces a closure or platform exit.</p><h2 id=\"11-refund-dispute-resolution\">11. Refund &amp; Dispute Resolution</h2><p>Puraskrit does not process payments for merchant services. Therefore, any refunds for goods or services must be handled directly between you and the merchant.</p><p>If you are unable to resolve a dispute directly with the merchant, you may escalate it to Puraskrit by contacting: support@puraskrit.com. Puraskrit may, at its sole discretion, intervene to facilitate a resolution. Puraskrit's intervention does not make it liable for the merchant's obligations.</p><p>In the event that a dispute cannot be resolved through Puraskrit's facilitation, the parties agree to attempt resolution through mediation before initiating arbitration proceedings as described in Section 15.</p><h2 id=\"12-privacy-data-rights\">12. Privacy &amp; Data Rights</h2><p>Your use of the Platform is governed by the Customer Privacy Policy, which is incorporated herein by reference. As a Data Principal under the DPDP Act 2023, you have the right to access, correct, update, erase, and port your personal data, and to raise grievances about its processing.</p><p>You may request account deletion and permanent purging of your personal data at any time. Upon a verified request, Puraskrit will delete your data within 30 days, subject to legal retention requirements.</p><h2 id=\"13-limitation-of-liability\">13. Limitation of Liability</h2><p>In the event of a platform software failure, bug, or server issue resulting in the loss of verifiable loyalty milestones, Puraskrit's liability is strictly limited to restoring the lost milestone data to its last verifiable state.</p><p>Puraskrit is not financially liable for: (a) the monetary value of any unredeemed merchant rewards; (b) any indirect, consequential, incidental, or punitive losses; (c) any loss arising from a merchant's failure to honour its obligations.</p><p>THE PLATFORM IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, PURASKRIT EXPRESSLY DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. PURASKRIT DOES NOT WARRANT THAT THE PLATFORM WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS.</p><h2 id=\"14-termination-of-account\">14. Termination of Account</h2><h3 id=\"14-1-termination-for-cause-immediate\">14.1 Termination for Cause (Immediate)</h3><p>Puraskrit reserves the right to immediately suspend or permanently terminate your account without prior notice if you are found to be engaged in:</p><ul><li>Fraud or financial crime</li><li>Illegal activities using the Platform</li><li>Severe or repeated platform abuse</li><li>Conduct that causes harm to other users or merchants</li></ul><h3 id=\"14-2-termination-for-policy-violations-with-cure-period\">14.2 Termination for Policy Violations (With Cure Period)</h3><p>For non-fraudulent policy violations (such as a first-time violation of the Acceptable Use Policy), Puraskrit will issue a written warning via the app or registered email and provide a cure period of 14 days for you to remedy the violation. If the violation is not remedied within this period, Puraskrit may suspend or terminate the account.</p><h2 id=\"15-dispute-resolution-arbitration\">15. Dispute Resolution &amp; Arbitration</h2><p>In the event of any dispute, controversy, or claim arising out of or in connection with these Terms &amp; Conditions, the parties shall first attempt to resolve it informally by contacting Puraskrit at support@puraskrit.com. Puraskrit will endeavour to acknowledge disputes within 5 business days.</p><p>If the dispute is not resolved within 30 days of informal escalation, either party may refer it to binding arbitration under the Arbitration and Conciliation Act, 1996 (as amended). The arbitration shall be:</p><ul><li>Conducted by a sole arbitrator mutually agreed upon by the parties or appointed by the courts of Bengaluru in the absence of agreement.</li><li>Held in Bengaluru, Karnataka, India.</li><li>Conducted in the English language.</li><li>Governed by the laws of India.</li></ul><p>The award of the arbitrator shall be final and binding. Nothing in this clause prevents either party from seeking urgent interim relief from a court of competent jurisdiction.</p><h2 id=\"16-force-majeure\">16. Force Majeure</h2><p>Puraskrit shall not be liable for any failure or delay in performing its obligations under these Terms &amp; Conditions where such failure or delay results from any cause beyond Puraskrit's reasonable control, including but not limited to acts of God, natural disasters, pandemic, government orders, internet or telecommunications outages, cyberattacks, AWS infrastructure failures, regulatory actions, or civil unrest.</p><p>Puraskrit will use reasonable efforts to minimise the impact of any force majeure event and will notify affected users through the app as soon as practicable.</p><h2 id=\"17-amendments\">17. Amendments</h2><p>Puraskrit reserves the right to update these Terms &amp; Conditions at any time. You will be notified of all updates through an in-app notification.</p><p>For material updates that affect your substantive rights (including data processing changes), a fresh consent screen will be presented for your explicit re-acceptance. Continued use of the app without that re-acceptance shall not constitute consent to material changes. For minor, non-material updates (e.g., formatting, corrections, clarifications), continued use after notification constitutes acceptance.</p><h2 id=\"18-severability\">18. Severability</h2><p>If any provision of these Terms &amp; Conditions is found by a competent court or arbitral tribunal to be invalid, unlawful, or unenforceable, that provision shall be modified to the minimum extent necessary to make it valid and enforceable, or severed if modification is not possible. The remaining provisions shall continue in full force and effect.</p><h2 id=\"19-governing-law-jurisdiction\">19. Governing Law &amp; Jurisdiction</h2><p>These Terms &amp; Conditions are governed by the laws of India. Subject to the arbitration clause in Section 15, all disputes shall be subject to the exclusive jurisdiction of courts located in Bengaluru, India.</p><p><em>— End of Customer Terms &amp; Conditions —</em></p>"
+}

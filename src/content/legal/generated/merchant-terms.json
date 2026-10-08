@@ -1,0 +1,102 @@
+{
+  "slug": "merchant-terms",
+  "source": "SellerApp_Terms_Conditions.docx",
+  "title": "PURASKRIT MERCHANT TERMS & CONDITIONS",
+  "meta": [
+    "Issued by: Asraubh Private Limited",
+    "Effective Date: 10/03/2026 | Version: 1.0"
+  ],
+  "effective": "Effective Date: 10/03/2026 | Version: 1.0",
+  "toc": [
+    {
+      "id": "1-company-information",
+      "text": "1. Company Information"
+    },
+    {
+      "id": "2-document-hierarchy",
+      "text": "2. Document Hierarchy"
+    },
+    {
+      "id": "3-definitions",
+      "text": "3. Definitions"
+    },
+    {
+      "id": "4-acceptance-of-terms",
+      "text": "4. Acceptance of Terms"
+    },
+    {
+      "id": "5-eligibility",
+      "text": "5. Eligibility"
+    },
+    {
+      "id": "6-platform-nature-and-role",
+      "text": "6. Platform Nature and Role"
+    },
+    {
+      "id": "7-merchant-obligations",
+      "text": "7. Merchant Obligations"
+    },
+    {
+      "id": "8-loyalty-program-structure",
+      "text": "8. Loyalty Program Structure"
+    },
+    {
+      "id": "9-loyalty-program-modifications",
+      "text": "9. Loyalty Program Modifications"
+    },
+    {
+      "id": "10-reward-redemption",
+      "text": "10. Reward Redemption"
+    },
+    {
+      "id": "11-merchant-exit-or-closure",
+      "text": "11. Merchant Exit or Closure"
+    },
+    {
+      "id": "12-subscription-and-fees",
+      "text": "12. Subscription and Fees"
+    },
+    {
+      "id": "13-future-services",
+      "text": "13. Future Services"
+    },
+    {
+      "id": "14-intellectual-property",
+      "text": "14. Intellectual Property"
+    },
+    {
+      "id": "15-limitation-of-liability",
+      "text": "15. Limitation of Liability"
+    },
+    {
+      "id": "16-indemnification",
+      "text": "16. Indemnification"
+    },
+    {
+      "id": "17-dispute-resolution-arbitration",
+      "text": "17. Dispute Resolution & Arbitration"
+    },
+    {
+      "id": "18-termination",
+      "text": "18. Termination"
+    },
+    {
+      "id": "19-force-majeure",
+      "text": "19. Force Majeure"
+    },
+    {
+      "id": "20-severability",
+      "text": "20. Severability"
+    },
+    {
+      "id": "21-amendments",
+      "text": "21. Amendments"
+    },
+    {
+      "id": "22-governing-law-jurisdiction",
+      "text": "22. Governing Law & Jurisdiction"
+    }
+  ],
+  "grievance": null,
+  "html": "<h2 id=\"1-company-information\">1. Company Information</h2><ul><li>Company Name: Asraubh Private Limited</li><li>Registered Location: Bengaluru, Karnataka, India</li><li>Contact Email: support@puraskrit.com</li><li>Grievance / Legal Email: support@puraskrit.com</li><li>Jurisdiction: Bengaluru, India</li></ul><h2 id=\"2-document-hierarchy\">2. Document Hierarchy</h2><p>These Merchant Terms &amp; Conditions, together with the Merchant Privacy Policy and the Merchant Terms of Use, constitute the entire agreement between the merchant and Asraubh Private Limited governing use of the Puraskrit merchant platform. In the event of any inconsistency, the following precedence applies:</p><ul><li>1st: Merchant Terms &amp; Conditions (this document)</li><li>2nd: Merchant Privacy Policy</li><li>3rd: Merchant Terms of Use</li></ul><h2 id=\"3-definitions\">3. Definitions</h2><ul><li>Platform: The Puraskrit mobile application and associated merchant software.</li><li>Company / Puraskrit: Asraubh Private Limited.</li><li>Merchant: A business registered on the platform offering services to customers.</li><li>Customer / Data Principal: An individual using the platform to track loyalty benefits.</li><li>Services: Any service provided directly by merchants to customers.</li><li>Loyalty Program: Merchant-defined milestone-based reward systems tracked via the platform.</li><li>Milestone: A defined, achievable target based on transaction frequency or spending thresholds.</li><li>Subscription: The active paid plan giving the merchant access to Puraskrit merchant tools.</li></ul><h2 id=\"4-acceptance-of-terms\">4. Acceptance of Terms</h2><p>By completing merchant registration and tapping \"I Agree,\" you agree to be bound by these Terms &amp; Conditions. If you do not agree, you may not access the merchant platform.</p><p>For any changes to terms that materially affect how personal data is processed, a fresh consent screen will be presented in the merchant portal. Such changes take effect only upon your explicit re-acceptance. For non-material updates (clarifications, formatting corrections), continued use after in-app notification constitutes acceptance.</p><h2 id=\"5-eligibility\">5. Eligibility</h2><ul><li>The authorised representative creating the merchant account must be at least 18 years old.</li><li>The merchant must be a validly registered business entity or proprietor under applicable Indian law.</li><li>Merchants must register with accurate business details. Duplicate or fraudulent accounts are prohibited.</li><li>Merchants must maintain valid business licences throughout the subscription period.</li></ul><h2 id=\"6-platform-nature-and-role\">6. Platform Nature and Role</h2><p>Puraskrit provides software infrastructure that enables merchants to track customer transactions, operate loyalty programs, and communicate offers to customers. The platform may also function as a digital intermediary allowing customers to discover merchants and track loyalty progress. Puraskrit does not control merchant pricing, service delivery, or service quality. Merchants remain solely responsible for services provided to their customers.</p><h2 id=\"7-merchant-obligations\">7. Merchant Obligations</h2><p>By registering on the platform, merchants agree to:</p><ul><li>Maintain valid, current business licences and comply with all applicable laws.</li><li>Provide accurate transaction records and ensure milestone tracking reflects genuine customer transactions.</li><li>Honour all loyalty rewards promised to customers through the platform without arbitrary refusal.</li><li>Ensure that service quality is consistent with applicable consumer protection laws, including the Consumer Protection Act, 2019.</li><li>Avoid manipulating transaction data or milestone records.</li><li>Provide a minimum of 30 days' written notice to Puraskrit and affected customers prior to platform exit or business closure.</li><li>Remain fully responsible for the services they provide to customers.</li></ul><h2 id=\"8-loyalty-program-structure\">8. Loyalty Program Structure</h2><p>Merchants may create milestone-based loyalty programs based on customer spending or transaction frequency. Supported reward types include:</p><ul><li>Discounts on services</li><li>Free services</li><li>Complimentary add-ons</li><li>Special benefits defined by the merchant</li></ul><p>Points-based reward systems are not supported. Merchants are prohibited from:</p><ul><li>Setting milestones that are mathematically unattainable or practically impossible for a customer to reach.</li><li>Enforcing hidden time limits that expire earned progress unreasonably quickly without customer notification.</li><li>Using vague, ambiguous, or misleading reward descriptions.</li></ul><p>Puraskrit reserves the right to audit and reject milestone structures deemed predatory, deceptive, or contrary to the platform's Fair Service Policy.</p><h2 id=\"9-loyalty-program-modifications\">9. Loyalty Program Modifications</h2><p>Merchants may request changes to their loyalty program configuration. No modification may retroactively devalue, reduce, or erase milestones already earned by a customer. Any approved structural change to reward terms will apply only to future transactions. Customers must be notified of structural changes at least 7 days before they take effect.</p><h2 id=\"10-reward-redemption\">10. Reward Redemption</h2><p>Rewards are redeemable only with the issuing merchant. Merchants must ensure customers can redeem rewards in accordance with the defined program rules. Arbitrary denial of valid reward redemption is a violation of these Terms and may result in account suspension.</p><h2 id=\"11-merchant-exit-or-closure\">11. Merchant Exit or Closure</h2><p>If a merchant intends to exit the platform or close their business, they must:</p><ul><li>Provide a minimum of 30 days' written advance notice to Puraskrit and all affected customers.</li><li>Allow customers to redeem all outstanding earned milestones during the notice period.</li></ul><p>If redemption becomes impossible due to sudden or unannounced closure, Puraskrit may attempt to migrate affected customers to another merchant offering similar services. If no suitable merchant is available for migration, the original merchant is liable to compensate affected customers for the verifiable unredeemed value of earned milestones prior to their exit. Puraskrit does not itself hold or guarantee the financial value of these rewards.</p><h2 id=\"12-subscription-and-fees\">12. Subscription and Fees</h2><h3 id=\"12-1-subscription-plans\">12.1 Subscription Plans</h3><p>Merchants must maintain an active subscription to access Puraskrit merchant tools. Subscription plans and pricing are as follows:</p><ul><li>[INSERT PLAN NAME]: ₹[INSERT AMOUNT] per [month/year], billed [monthly/annually].</li><li>[INSERT PLAN NAME]: ₹[INSERT AMOUNT] per [month/year], billed [monthly/annually].</li></ul><p>[Additional plans to be specified. Puraskrit will notify merchants of any change to subscription pricing with a minimum of 30 days' written notice.]</p><h3 id=\"12-2-billing-and-auto-renewal\">12.2 Billing and Auto-Renewal</h3><p>Subscriptions auto-renew at the end of each billing cycle unless cancelled. Merchants will receive a renewal reminder at least 7 days before each billing date. To cancel auto-renewal, merchants must do so via the merchant portal or by contacting support@puraskrit.com at least 3 days before the next billing date.</p><h3 id=\"12-3-prepaid-subscription-refunds\">12.3 Prepaid Subscription Refunds</h3><p>If Puraskrit terminates a merchant account for any reason other than fraud or policy violation, any prepaid, unused subscription fees will be refunded on a pro-rata basis within 30 days of termination. No refund is due if the merchant account is terminated for fraud, illegal activity, or material breach of these Terms.</p><h3 id=\"12-4-additional-fees\">12.4 Additional Fees</h3><p>Puraskrit may charge additional fees for promotional placement, visibility features, or marketing tools. These fees are optional and will be presented to the merchant before purchase. The merchant is under no obligation to purchase any promotional features.</p><h2 id=\"13-future-services\">13. Future Services</h2><p>Puraskrit may introduce additional services including payment processing, advanced analytics, and extended marketing tools. Merchants will be notified of new services and their pricing before they become available. Use of any new service will be subject to additional terms communicated at the time of launch.</p><h2 id=\"14-intellectual-property\">14. Intellectual Property</h2><p>All platform software, systems, algorithms, and branding are owned exclusively by Asraubh Private Limited. Merchants may not copy, distribute, reverse engineer, or create derivative works from the platform.</p><p>Merchants retain ownership of their own business content (logos, images, service descriptions) uploaded to the platform. By uploading such content, merchants grant Puraskrit a limited, non-exclusive, royalty-free licence to display their content on the platform for the purpose of operating their merchant profile and loyalty programs. Puraskrit will not use merchant content for external advertising or promotional purposes without separate explicit consent.</p><h2 id=\"15-limitation-of-liability\">15. Limitation of Liability</h2><p>Puraskrit's total aggregate liability to a merchant for any claims arising out of or related to the platform (including service failures, data loss, or milestone errors) is strictly limited to the total subscription fees paid by that merchant to Puraskrit in the 12 months immediately preceding the event giving rise to the claim.</p><p>Puraskrit is not liable for: (a) indirect, consequential, incidental, or punitive losses; (b) loss of revenue or profits; (c) customer disputes arising from the merchant's own services; or (d) losses arising from force majeure events.</p><p>THE PLATFORM IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, PURASKRIT EXPRESSLY DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p><h2 id=\"16-indemnification\">16. Indemnification</h2><p>Merchants agree to indemnify, defend, and hold harmless Asraubh Private Limited, its officers, employees, and agents from and against any claims, damages, costs, and liabilities (including reasonable legal fees) arising from: (a) the merchant's services or products; (b) the merchant's violation of these Terms; (c) customer disputes related to the merchant's own conduct; or (d) the merchant's violation of any applicable law.</p><h2 id=\"17-dispute-resolution-arbitration\">17. Dispute Resolution &amp; Arbitration</h2><p>In the event of any dispute, the parties shall first attempt to resolve it informally within 30 days of written notice to support@puraskrit.com. If the dispute is not resolved informally, either party may refer it to binding arbitration under the Arbitration and Conciliation Act, 1996 (as amended). Arbitration shall be conducted by a sole arbitrator, in Bengaluru, in the English language, under Indian law. The arbitrator's award shall be final and binding.</p><p>Nothing in this clause prevents either party from seeking urgent interim relief from a court of competent jurisdiction.</p><h2 id=\"18-termination\">18. Termination</h2><h3 id=\"18-1-termination-for-cause-immediate\">18.1 Termination for Cause (Immediate)</h3><p>Puraskrit may immediately suspend or terminate a merchant account without notice for:</p><ul><li>Fraud, financial crime, or submission of fraudulent transaction data</li><li>Illegal activities using the platform</li><li>Severe or repeated platform abuse</li><li>Operating a prohibited business category (see Merchant Terms of Use)</li><li>Material breach of obligations under Section 7 of these Terms</li></ul><h3 id=\"18-2-termination-with-cure-period\">18.2 Termination with Cure Period</h3><p>For non-fraudulent violations, Puraskrit will issue a written warning and provide 14 days to remedy the violation. If unremedied, the account may be suspended or terminated. The merchant must continue to honour existing customer milestones during any notice or cure period.</p><h3 id=\"18-3-voluntary-exit\">18.3 Voluntary Exit</h3><p>Merchants who wish to voluntarily exit the platform must provide 30 days' written notice and comply with the merchant exit obligations in Section 11.</p><h2 id=\"19-force-majeure\">19. Force Majeure</h2><p>Puraskrit shall not be liable for any failure or delay in performing obligations where such failure results from events beyond its reasonable control, including acts of God, natural disasters, pandemic, government orders, internet or telecommunications outages, cyberattacks, AWS infrastructure failures, or regulatory actions. Puraskrit will notify affected merchants through the platform and make reasonable efforts to restore services.</p><h2 id=\"20-severability\">20. Severability</h2><p>If any provision of these Terms &amp; Conditions is found to be invalid or unenforceable, it shall be modified to the minimum necessary extent or severed. All remaining provisions shall continue in full force and effect.</p><h2 id=\"21-amendments\">21. Amendments</h2><p>Puraskrit reserves the right to update these Terms at any time. Merchants will be notified via email and the merchant portal. For material changes affecting data processing, fresh explicit re-consent is required. For non-material updates, continued use after notification constitutes acceptance.</p><h2 id=\"22-governing-law-jurisdiction\">22. Governing Law &amp; Jurisdiction</h2><p>These Terms &amp; Conditions are governed by the laws of India. Subject to the arbitration clause in Section 17, all disputes shall be subject to the exclusive jurisdiction of courts located in Bengaluru, India.</p><p><em>— End of Merchant Terms &amp; Conditions —</em></p>"
+}

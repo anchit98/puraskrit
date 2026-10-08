@@ -1,0 +1,143 @@
+/*
+ * Puraskrit Professional Blue: design tokens.
+ * Mapped 1:1 from DESIGN.md / context file §3. Do not add colours or fonts here.
+ * Tailwind v4 turns every --color-NAME token into bg-NAME, text-NAME and border-NAME utilities.
+ */
+@theme {
+  /* Colours (§3.1) */
+  --color-primary: #2563eb;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #dbeafe;
+  --color-on-primary-container: #1e40af;
+  --color-navy: #1a2b4a; /* secondary / on-surface */
+  --color-surface: #f8f9fb; /* page canvas */
+  --color-card: #ffffff; /* surface-container-lowest */
+  --color-tag: #f1f5f9; /* surface-container / tag fill */
+  --color-surface-high: #e2e8f0; /* surface-container-high */
+  --color-outline: #e2e8f0;
+  --color-outline-variant: #cbd5e1;
+  --color-muted: #64748b; /* on-surface-variant */
+  --color-accent-green: #10b981; /* active / verified / positive only */
+  --color-error: #ba1a1a; /* error states only */
+  --color-icon-bg: #eff6ff; /* permission-icon container */
+
+  /* Fonts (§3.2). Variables are injected by next/font in layout.tsx. */
+  /* Inter before Devanagari: any glyph Manrope lacks (e.g. ₹) comes from Inter, so the Devanagari
+     font only downloads when Devanagari text is actually on the page. */
+  --font-headline: var(--font-manrope), var(--font-inter), var(--font-devanagari), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), var(--font-devanagari), ui-sans-serif, system-ui, sans-serif;
+
+  /* Radius (§3.3) */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-card: 20px;
+  --radius-xl: 24px;
+
+  /* Elevation (§3.3) */
+  --shadow-card: 0 4px 20px rgba(26, 43, 74, 0.05);
+  --shadow-lift: 0 18px 50px rgba(26, 43, 74, 0.1);
+
+  /* Spacing (§3.3): 4, 8, 16, 24, 32px map to Tailwind's default 4px scale: 1, 2, 4, 6, 8.
+     Not redefined here: named spacing tokens would collide with max-w-sm/md/lg/xl in Tailwind v4. */
+}
+
+/* Type scale (§3.2). Display scales up on desktop with the same font, weight and tracking. */
+@utility text-display {
+  font-family: var(--font-headline);
+  font-size: clamp(36px, 5.2vw, 60px);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+@utility text-headline-lg {
+  font-family: var(--font-headline);
+  font-size: clamp(28px, 3.2vw, 40px);
+  line-height: 1.22;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+@utility text-headline-md {
+  font-family: var(--font-headline);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+@utility text-headline-sm {
+  font-family: var(--font-headline);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+}
+@utility text-title-md {
+  font-family: var(--font-headline);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+@utility text-body-lg {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+@utility text-body-sm {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+@utility text-label-lg {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+}
+@utility text-label-md {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+}
+@utility text-label-sm {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+@utility text-overline {
+  font-family: var(--font-headline);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Card per §3.3 */
+@utility card {
+  background: var(--color-card);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* Page container: 32px margin desktop, 16px mobile */
+@utility container-page {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  /* 16px mobile / 32px desktop, never less than the notch / rounded-corner safe area */
+  padding-inline: max(16px, env(safe-area-inset-left), env(safe-area-inset-right));
+  @media (width >= 768px) {
+    padding-inline: max(32px, env(safe-area-inset-left), env(safe-area-inset-right));
+  }
+}

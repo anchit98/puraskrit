@@ -1,0 +1,178 @@
+@import "tailwindcss";
+@import "../styles/theme.css";
+
+/* Scroll-pinned storytelling only where it is comfortable: wide, tall, and motion allowed. */
+@custom-variant pin (@media (min-width: 1024px) and (min-height: 720px) and (prefers-reduced-motion: no-preference));
+/* Full-height hero only on desktop-sized, tall-enough viewports (never on landscape phones). */
+@custom-variant hero-tall (@media (min-width: 1024px) and (min-height: 700px));
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  /* clip (not hidden): stops stray horizontal overflow without creating a scroll container,
+     so position: sticky keeps working on iOS Safari. */
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-headline);
+  color: var(--color-navy);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* Soft blue background wash used behind hero areas (token colours only). */
+.bg-wash {
+  background:
+    radial-gradient(60% 50% at 75% 30%, rgba(37, 99, 235, 0.1), transparent 70%),
+    radial-gradient(45% 40% at 10% 80%, rgba(219, 234, 254, 0.9), transparent 70%),
+    var(--color-surface);
+}
+
+/* Subtle dotted grid for depth behind 3D scenes. */
+.bg-grid {
+  background-image: radial-gradient(var(--color-outline-variant) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* Legal document prose (verbatim text, token styling only). */
+.legal-prose h2 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  margin: 40px 0 12px;
+  scroll-margin-top: 96px;
+}
+.legal-prose h3 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+  scroll-margin-top: 96px;
+}
+.legal-prose p {
+  font-size: 15px;
+  line-height: 26px;
+  margin: 0 0 14px;
+  color: var(--color-navy);
+}
+.legal-prose ul,
+.legal-prose ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+  list-style: disc;
+}
+.legal-prose ol {
+  list-style: decimal;
+}
+.legal-prose li {
+  font-size: 15px;
+  line-height: 26px;
+  margin-bottom: 6px;
+}
+.legal-prose li::marker {
+  color: var(--color-primary);
+}
+.legal-prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Screen-reader-only helper */
+.sr-only-focusable:not(:focus):not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+
+
+
+/* One-off scan sweep inside the coded Seller App scanner (plays once per step, no loop). */
+.screen-scan {
+  animation: scan-once 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes scan-once {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(26em);
+    opacity: 0.2;
+  }
+}
+
+/* One-off sparkle when a reward unlocks. */
+.sparkle {
+  left: -3px;
+  top: -3px;
+  animation: sparkle 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes sparkle {
+  from {
+    transform: rotate(var(--a)) translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: rotate(var(--a)) translateY(-26px) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* Page-to-page fade (client navigations only; never on first load, so first paint is instant). */
+.page-in {
+  animation: page-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle,
+  .screen-scan {
+    animation: none;
+    display: none;
+  }
+}

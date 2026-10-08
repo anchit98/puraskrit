@@ -1,0 +1,84 @@
+{
+  "slug": "merchant-privacy",
+  "source": "SellerApp_Privacy_Policy.docx",
+  "title": "PURASKRIT MERCHANT PRIVACY POLICY",
+  "meta": [
+    "Issued by: Asraubh Private Limited",
+    "Effective Date: 10/08/2026 | Version: 1.0"
+  ],
+  "effective": "Effective Date: 10/08/2026 | Version: 1.0",
+  "toc": [
+    {
+      "id": "data-collection-notice-as-required-under-section-5-digital-p",
+      "text": "DATA COLLECTION NOTICE (As required under Section 5, Digital Personal Data Protection Act, 2023)"
+    },
+    {
+      "id": "1-about-this-policy",
+      "text": "1. About This Policy"
+    },
+    {
+      "id": "2-definitions",
+      "text": "2. Definitions"
+    },
+    {
+      "id": "3-business-data-collection",
+      "text": "3. Business Data Collection"
+    },
+    {
+      "id": "4-purpose-of-data-usage",
+      "text": "4. Purpose of Data Usage"
+    },
+    {
+      "id": "5-data-processing-roles-obligations",
+      "text": "5. Data Processing Roles & Obligations"
+    },
+    {
+      "id": "6-spdi-financial-data-protection",
+      "text": "6. SPDI: Financial Data Protection"
+    },
+    {
+      "id": "7-consent-mechanism",
+      "text": "7. Consent Mechanism"
+    },
+    {
+      "id": "8-data-storage-cross-border-transfers",
+      "text": "8. Data Storage & Cross-Border Transfers"
+    },
+    {
+      "id": "9-data-retention-deletion",
+      "text": "9. Data Retention & Deletion"
+    },
+    {
+      "id": "10-security-compliance",
+      "text": "10. Security & Compliance"
+    },
+    {
+      "id": "11-your-rights-as-a-data-principal",
+      "text": "11. Your Rights as a Data Principal"
+    },
+    {
+      "id": "12-grievance-officer",
+      "text": "12. Grievance Officer"
+    },
+    {
+      "id": "13-merchant-communications",
+      "text": "13. Merchant Communications"
+    },
+    {
+      "id": "14-amendments",
+      "text": "14. Amendments"
+    },
+    {
+      "id": "15-governing-law-jurisdiction",
+      "text": "15. Governing Law & Jurisdiction"
+    }
+  ],
+  "grievance": [
+    "Name: Krishna Kumar Pradhan",
+    "Designation: Krishna Kumar Pradhan, Director, Asraubh Private Limited",
+    "Email: support@puraskrit.com",
+    "Address: Asraubh Private Limited, Bengaluru, Karnataka, India",
+    "Response Time: Acknowledgement within 48 hours; resolution within 30 days"
+  ],
+  "html": "<h2 id=\"data-collection-notice-as-required-under-section-5-digital-p\">DATA COLLECTION NOTICE (As required under Section 5, Digital Personal Data Protection Act, 2023)</h2><p>Asraubh Private Limited (\"Puraskrit\") collects business profile data, authorised representative contact details, compliance data (GSTIN), and financial account information for the purposes of operating your merchant account, processing subscription payments, and enabling the loyalty platform. By completing merchant registration and tapping \"I Agree,\" you provide your free, specific, informed, unconditional, and unambiguous consent to this collection and use. Financial account information is treated as Sensitive Personal Data or Information (SPDI) under applicable law and is subject to stricter protections as described in Section 6 of this Policy. To exercise your rights or raise a grievance, contact: support@puraskrit.com.</p><h2 id=\"1-about-this-policy\">1. About This Policy</h2><p>This Privacy Policy governs how Asraubh Private Limited (\"Puraskrit\") collects, uses, stores, and protects the personal and business data of merchants registered on the Puraskrit platform. This Policy is issued in compliance with the Digital Personal Data Protection Act, 2023 (\"DPDP Act\"), the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 (\"IT Rules 2011\"), and the IT Act, 2000.</p><h2 id=\"2-definitions\">2. Definitions</h2><ul><li>Data Fiduciary: Asraubh Private Limited, which determines the purpose and means of processing merchant data on the Puraskrit platform.</li><li>Data Principal: The authorised representative of the merchant whose personal data is being processed.</li><li>SPDI (Sensitive Personal Data or Information): As defined under IT Rules 2011, includes financial account information such as bank account details, credit/debit card numbers, and billing information.</li><li>Data Processor: A third party that processes data on behalf of Puraskrit (e.g., cloud infrastructure providers).</li></ul><h2 id=\"3-business-data-collection\">3. Business Data Collection</h2><p>To provide Puraskrit merchant tools and services, we collect the following categories of information:</p><h3 id=\"3-1-business-profile-data\">3.1 Business Profile Data</h3><ul><li>Business name, registered address, and operational category</li><li>Business logo and visual assets (if provided)</li></ul><h3 id=\"3-2-authorised-representative-information\">3.2 Authorised Representative Information</h3><ul><li>Full name of the primary account holder</li><li>Professional email address</li><li>Mobile phone number</li></ul><h3 id=\"3-3-compliance-data\">3.3 Compliance Data</h3><ul><li>GSTIN (Goods and Services Tax Identification Number)</li><li>Business licences or other regulatory identifiers required for verified merchant status</li></ul><h3 id=\"3-4-financial-data-spdi\">3.4 Financial Data (SPDI)</h3><p>Bank account details and billing information are collected solely for the purpose of processing subscription fee payments and issuing tax-compliant invoices. This information constitutes Sensitive Personal Data or Information (SPDI) under IT Rules 2011 and is governed by the specific protections set out in Section 6 of this Policy.</p><h3 id=\"3-5-transaction-logs\">3.5 Transaction Logs</h3><ul><li>Metadata regarding customer interactions and reward redemptions processed through your merchant terminal (these records do not include raw customer personal data beyond account identifiers)</li></ul><h2 id=\"4-purpose-of-data-usage\">4. Purpose of Data Usage</h2><p>Merchant data is used for the following purposes only:</p><ul><li>Verifying your business identity and maintaining a secure, trusted merchant ecosystem</li><li>Processing subscription payments and providing tax-compliant invoices</li><li>Facilitating loyalty program tracking and customer communication tools</li><li>Providing analytics and reporting on customer engagement and milestone progress</li><li>Communicating critical platform updates, billing notices, and security alerts</li></ul><p>Your data will not be used for any purpose beyond those listed above without your fresh, explicit consent.</p><h2 id=\"5-data-processing-roles-obligations\">5. Data Processing Roles &amp; Obligations</h2><h3 id=\"5-1-puraskrit-as-data-fiduciary\">5.1 Puraskrit as Data Fiduciary</h3><p>Puraskrit acts as the Data Fiduciary with respect to the personal data of merchant authorised representatives, determining the purpose and means of processing in accordance with the DPDP Act 2023.</p><h3 id=\"5-2-merchant-as-data-fiduciary-for-customer-data\">5.2 Merchant as Data Fiduciary for Customer Data</h3><p>With respect to the personal data of the customers who transact at your business, you act as the Data Fiduciary. You are responsible for ensuring that your use of customer data accessed through Puraskrit complies with applicable Indian law, including the DPDP Act 2023. Puraskrit acts as a Data Processor on your behalf for the purpose of storing and managing loyalty data.</p><h3 id=\"5-3-joint-security-responsibility\">5.3 Joint Security Responsibility</h3><p>While Puraskrit secures the platform infrastructure, you are responsible for securing your merchant login credentials. Unauthorised access to customer records arising from compromised merchant credentials is your responsibility. You must notify Puraskrit immediately at support@puraskrit.com if you suspect unauthorised access to your account.</p><h2 id=\"6-spdi-financial-data-protection\">6. SPDI: Financial Data Protection</h2><p>Bank account details and billing information collected for subscription processing are classified as Sensitive Personal Data or Information (SPDI) under Rule 3 of the IT Rules 2011. The following additional protections apply:</p><ul><li>Written Consent: Your consent to the collection and processing of SPDI is obtained through the explicit consent screen at merchant registration. You may withdraw consent for SPDI processing, subject to your ability to fulfil your subscription payment obligations.</li><li>Access and Correction: You have the right to review and update your financial account details at any time via your merchant account settings.</li><li>No Third-Party Disclosure: Your bank account details will not be disclosed to any third party without your consent, except to payment processing partners strictly necessary to process your subscription fees and subject to confidentiality agreements.</li><li>Restricted Internal Access: Financial data is accessible only to authorised Puraskrit personnel on a strict need-to-know basis, protected by role-based access controls.</li><li>Retention: Financial and billing records will be retained for up to 7 years following account termination to comply with Indian tax and corporate audit laws (as required under the Income Tax Act and Companies Act).</li></ul><h2 id=\"7-consent-mechanism\">7. Consent Mechanism</h2><p>Your consent to the collection and processing of your business and personal data is obtained through a clear, affirmative action: by tapping \"I Agree\" on the consent screen presented during merchant registration. This consent is free, specific, informed, unconditional, and unambiguous.</p><p>You may withdraw your consent to non-essential data processing at any time by contacting support@puraskrit.com. Withdrawal of consent for essential processing (such as GSTIN retention for compliance purposes) may affect your ability to maintain an active merchant subscription.</p><h2 id=\"8-data-storage-cross-border-transfers\">8. Data Storage &amp; Cross-Border Transfers</h2><p>All business and transaction data is stored on secure AWS infrastructure located in India. Puraskrit implements AES-256 encryption for all merchant data at rest and in transit.</p><p>Puraskrit does not currently transfer merchant data outside India. In the event that any third-party service provider used in platform operations (such as analytics or billing tools) processes data offshore, Puraskrit will ensure such transfers comply with DPDP Act requirements, occur only to permitted jurisdictions, and are subject to adequate contractual protections.</p><h2 id=\"9-data-retention-deletion\">9. Data Retention &amp; Deletion</h2><ul><li>Active Accounts: Business profile and operational data is retained for the duration of your active merchant subscription.</li><li>Post-Termination: Upon termination of your merchant account, you may request deletion of your business profile data. Transaction records, financial data (SPDI), and compliance-related data (GSTIN) may be retained for up to 7 years to comply with Indian tax and corporate audit laws.</li><li>Deletion Requests: To request deletion of your business profile data, contact: support@puraskrit.com. Verified deletion requests will be processed within 30 days, subject to applicable legal retention obligations.</li></ul><h2 id=\"10-security-compliance\">10. Security &amp; Compliance</h2><p>Puraskrit implements the following security measures to protect merchant data:</p><ul><li>Strict role-based access controls limiting access to authorised personnel only</li><li>AES-256 encryption at rest and in transit</li><li>Continuous system monitoring and intrusion detection</li><li>Security practices aligned with ISO 27001 standards</li></ul><p>In the event of a personal data breach affecting merchant data, Puraskrit will notify affected merchants and the Data Protection Board (once constituted) in the manner and within the timeline prescribed by the DPDP Act. Notification will describe the nature of the breach, the data affected, and the remedial steps taken.</p><h2 id=\"11-your-rights-as-a-data-principal\">11. Your Rights as a Data Principal</h2><p>As the authorised representative (Data Principal) of your merchant business, you have the following rights under the DPDP Act 2023:</p><ul><li>Right to Access: Request a summary of personal data held about you and how it is processed.</li><li>Right to Correction and Updation: Request correction of inaccurate, incomplete, or outdated data.</li><li>Right to Erasure: Request deletion of your personal data (subject to legal retention obligations).</li><li>Right to Data Portability: Receive your personal data in a structured, commonly used format.</li><li>Right to Grievance Redressal: Have grievances addressed within 30 days (see Section 12).</li><li>Right to Nominate: Nominate another individual to exercise your data rights in the event of death or incapacity.</li></ul><h2 id=\"12-grievance-officer\">12. Grievance Officer</h2><p>In accordance with Rule 5(9) of the IT Rules 2011 and the DPDP Act 2023, Asraubh Private Limited has designated a Grievance Officer:</p><ul><li>Name: Krishna Kumar Pradhan</li><li>Designation: Krishna Kumar Pradhan, Director, Asraubh Private Limited</li><li>Email: support@puraskrit.com</li><li>Address: Asraubh Private Limited, Bengaluru, Karnataka, India</li><li>Response Time: Acknowledgement within 48 hours; resolution within 30 days</li></ul><p>Unresolved grievances may be escalated to the Data Protection Board of India once constituted under the DPDP Act 2023.</p><h2 id=\"13-merchant-communications\">13. Merchant Communications</h2><p>Puraskrit will communicate with merchants regarding:</p><ul><li>Critical platform updates and security alerts</li><li>Billing and subscription notifications</li><li>Performance reports and analytics summaries</li><li>Loyalty program optimisation tips (promotional)</li></ul><p>You may opt out of non-essential promotional communications at any time. Critical service-related and billing alerts will remain active as long as your subscription is active.</p><h2 id=\"14-amendments\">14. Amendments</h2><p>Puraskrit reserves the right to update this Privacy Policy. You will be notified of all updates via email and through the merchant portal. Material changes affecting how your personal data is processed will require fresh, explicit re-consent before taking effect.</p><h2 id=\"15-governing-law-jurisdiction\">15. Governing Law &amp; Jurisdiction</h2><p>This Privacy Policy is governed by the laws of India, including the DPDP Act 2023, IT Act 2000, and IT Rules 2011. Any disputes related to merchant data privacy shall be subject to the exclusive jurisdiction of the courts in Bengaluru, India.</p><p><em>— End of Merchant Privacy Policy —</em></p>"
+}

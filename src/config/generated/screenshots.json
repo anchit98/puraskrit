@@ -1,0 +1,26 @@
+{
+  "buyer-00-landing": {
+    "width": 396,
+    "height": 897
+  },
+  "buyer-06-offers-nearby": {
+    "width": 864,
+    "height": 1765
+  },
+  "seller-02-preview-milestones": {
+    "width": 864,
+    "height": 1821
+  },
+  "seller-03-active-offers": {
+    "width": 864,
+    "height": 1821
+  },
+  "seller-04-offer-details": {
+    "width": 938,
+    "height": 1677
+  },
+  "seller-05-scan-amount": {
+    "width": 390,
+    "height": 1088
+  }
+}

@@ -1,17 +1,24 @@
 /**
- * Single source for links, flags and screenshots.
- * Everything marked SAMPLE must be replaced before launch.
+ * Single source for links and screenshots.
+ * TODO(founder): replace the placeholder store URLs at launch.
  */
+import SHOT_SIZES from "./generated/screenshots.json";
 
 export const APP_LINKS = {
-  // SAMPLE: invented package ID, not a real listing. Replace at launch (or set NEXT_PUBLIC_PLAY_STORE_URL).
+  // TODO(founder): placeholder package ID, not a real listing yet (or set NEXT_PUBLIC_PLAY_STORE_URL).
   playStoreUrl:
     process.env.NEXT_PUBLIC_PLAY_STORE_URL ||
     "https://play.google.com/store/apps/details?id=com.puraskrit.customer",
-  // null => render "Coming soon on iOS". Set NEXT_PUBLIC_APP_STORE_URL once iOS is live.
+  // null => "Coming soon to iOS". Set NEXT_PUBLIC_APP_STORE_URL once iOS is live.
   appStoreUrl: (process.env.NEXT_PUBLIC_APP_STORE_URL || null) as string | null,
-  // Set NEXT_PUBLIC_SHOW_SAMPLE_MARKER=false for the production launch build.
-  showSampleMarker: process.env.NEXT_PUBLIC_SHOW_SAMPLE_MARKER !== "false",
+};
+
+/** Seller App (merchant page only). */
+export const SELLER_APP_LINKS = {
+  // TODO(founder): placeholder, the Seller App is not listed yet (or set NEXT_PUBLIC_SELLER_PLAY_STORE_URL).
+  playStoreUrl:
+    process.env.NEXT_PUBLIC_SELLER_PLAY_STORE_URL ||
+    "https://play.google.com/store/apps/details?id=com.puraskrit.merchant",
 };
 
 export const SITE = {
@@ -20,11 +27,10 @@ export const SITE = {
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.puraskrit.com").replace(/\/$/, ""),
   company: "Asraubh Private Limited",
   email: "support@puraskrit.com",
-  location: "Bengaluru, Karnataka, India",
-  city: "Bengaluru",
+  location: "Bengaluru, Karnataka, India", // Registered company address, footer only. check-copy-ignore
 };
 
-// TODO(lead-dev): backend for the merchant lead form. See README "Lead form".
+// TODO(lead-dev): backend for the merchant lead form. See README "Forms".
 export const LEAD_ENDPOINT = process.env.NEXT_PUBLIC_LEAD_ENDPOINT || "";
 
 export type Screenshot = {
@@ -37,44 +43,34 @@ export type Screenshot = {
   width: number;
   height: number;
   alt: string;
-  /** true while the founder-supplied placeholder is in use */
-  sample: boolean;
 };
 
-const shot = (file: string, width: number, height: number, alt: string): Screenshot => ({
+type ShotFile = keyof typeof SHOT_SIZES;
+
+/** Sizes come from the trimmed files (scripts/copy-assets.mjs), so phone frames match exactly. */
+const shot = (file: ShotFile, alt: string): Screenshot => ({
   src: `/assets/${file}.png`,
   webp: `/assets/${file}.webp`,
   webpSmall: `/assets/${file}-600.webp`,
-  width,
-  height,
+  width: SHOT_SIZES[file].width,
+  height: SHOT_SIZES[file].height,
   alt,
-  sample: true,
 });
 
 /**
- * Screenshot slots (context file §8.2 / §8.3).
- * Removed in the finishing pass because they contain banned wording ("Spend ₹X", "more to go",
- * "record your spend"): buyer-01-loyalty, buyer-02-milestones, buyer-05-collect-qr,
- * seller-01-milestones, seller-05b-enter-amount. Those moments are rebuilt as coded screens in
- * components/screens/Screens.tsx. Re-add a slot only once a corrected original is supplied.
- * SAMPLE: all are provisional founder placeholders with known issues (§8.4, §8.5).
- * Swap a file here (or replace it in website-assets/) and every page updates.
+ * Screenshot slots: only clean originals (founder decision, Oct 2026). Screens with banned
+ * wording, a location or a sample phone number stay unpublished (EXCLUDED in
+ * scripts/copy-assets.mjs) until corrected originals arrive. Swap a file in website-assets/
+ * and every page updates.
  */
 export const SCREENSHOTS = {
-  // SAMPLE
-  buyerLanding: shot("buyer-00-landing", 470, 897, "Puraskrit Buyer App welcome screen"),
-  // SAMPLE
-  buyerDiscover: shot("buyer-03-discover", 390, 440, "Buyer App location, search and category browsing"),
-  // SAMPLE: past dates in sample offers, see §8.4.
-  buyerOffers: shot("buyer-04-offers", 390, 730, "Nearby offers listed under the merchants that created them"),
-  // SAMPLE
-  sellerPreviewMilestones: shot("seller-02-preview-milestones", 864, 1821, "Seller App preview of milestones, each showing a reward and the amount it unlocks at"),
-  // SAMPLE: past dates, see §8.5.
-  sellerActiveOffers: shot("seller-03-active-offers", 864, 1821, "Seller App list of active offers of all three types"),
-  // SAMPLE: discount maths mismatch, see §8.5.
-  sellerOfferDetails: shot("seller-04-offer-details", 938, 1677, "Seller App offer detail sheet"),
-  // SAMPLE
-  sellerScan: shot("seller-05-scan-amount", 450, 1088, "Seller App QR scanner for logging a customer's purchase"),
+  buyerLanding: shot("buyer-00-landing", "Puraskrit app welcome screen"),
+  // Founder-supplied (Oct 12): offers from nearby shops. Status bar and system buttons cropped.
+  buyerOffers: shot("buyer-06-offers-nearby", "Offers from shops nearby in the Puraskrit app: spa, salon and gym offers with discounts and validity"),
+  sellerPreviewMilestones: shot("seller-02-preview-milestones", "Seller App preview of milestones, each showing a reward and the amount it unlocks at"),
+  sellerActiveOffers: shot("seller-03-active-offers", "Seller App list of active offers of all three types"),
+  sellerOfferDetails: shot("seller-04-offer-details", "Seller App offer detail sheet"),
+  sellerScan: shot("seller-05-scan-amount", "Seller App QR scanner for logging a customer's purchase"),
 } satisfies Record<string, Screenshot>;
 
 export type ScreenshotKey = keyof typeof SCREENSHOTS;
@@ -87,4 +83,18 @@ export const LOGO = {
   width: 640,
   height: 209,
   alt: "पुरSkrit",
+};
+
+/** Puraskrit Merchants logo (merchant page header and footer only). */
+export const MERCHANT_LOGO = {
+  src: "/assets/logo-merchants.png",
+  webp: "/assets/logo-merchants.webp",
+  width: 1391,
+  height: 509,
+  alt: "पुरSkrit Merchants",
+};
+
+/** Official Google Play badge (public/brand/), unmodified artwork. */
+export const BADGES = {
+  play: { src: "/brand/google-play-badge.png", width: 564, height: 168, alt: "Get it on Google Play" },
 };

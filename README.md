@@ -2,8 +2,19 @@
 
 Marketing site for Puraskrit (पुरSkrit) by Asraubh Private Limited, Bengaluru.
 
-- `/` and the customer pages exist to get the **Buyer App** downloaded.
-- `/merchants/*` is the merchant module, with a **Join as merchant** lead form.
+- **Customer-first.** `/` is one long, bold page: what Puraskrit is, how it works, and the download. FAQ, About and Contact are short pages linked from the footer.
+- **Merchants** have one page, `/merchants/` (Puraskrit Merchants logo, Seller App link, contact form). It is linked **only** from the footer row "Partner with us".
+- The header has no links: logo + store badges only. All links live in the footer.
+
+```
+/              Customer home          /merchants/     Partner with us (single merchant page + contact form)
+/faq/          Customer FAQ           /legal/[slug]/  6 verbatim legal pages
+/about/        About (3 sections)
+```
+
+Footer: **Puraskrit** (About, FAQ) · **For merchants** (Partner with us, Contact → `/merchants/#contact`) · **Legal** (3 docs) · social icons.
+
+Footer audience: on `/merchants/` and `/legal/merchant-*` the footer shows the 3 merchant legal docs and a "Get the app" link; everywhere else it shows the 3 customer docs and "Partner with us". The titles are always "Terms of Use", "Privacy Policy" and "Terms and Conditions" (`src/content/site.ts`).
 
 The source of truth for content and rules is `PURASKRIT_WEBSITE_CONTEXT_v2.md`. The design tokens come from `DESIGN.md`.
 
@@ -59,10 +70,10 @@ See `.env.example`. All of them are public.
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical URL for sitemap, robots and Open Graph |
-| `NEXT_PUBLIC_LEAD_ENDPOINT` | POST endpoint for the merchant lead form (backend is **TODO(lead-dev)**) |
-| `NEXT_PUBLIC_PLAY_STORE_URL` | Buyer App Google Play URL. The default is a **SAMPLE** invented package id |
+| `NEXT_PUBLIC_LEAD_ENDPOINT` | POST endpoint for the merchant contact form on `/merchants/` (backend is **TODO(lead-dev)**) |
+| `NEXT_PUBLIC_SELLER_PLAY_STORE_URL` | Seller App Google Play URL. The default is a placeholder (TODO) |
+| `NEXT_PUBLIC_PLAY_STORE_URL` | Buyer App Google Play URL. The default is a placeholder package id (TODO) |
 | `NEXT_PUBLIC_APP_STORE_URL` | Leave empty until iOS is live. Empty renders "Coming soon on iOS" |
-| `NEXT_PUBLIC_SHOW_SAMPLE_MARKER` | `false` hides the "SAMPLE — replace before launch" markers |
 | `NEXT_PUBLIC_ANALYTICS_ID` | Unused. Analytics is intentionally not added |
 
 ## Where things live
@@ -79,7 +90,8 @@ src/app/                 One folder per route
 src/components/          Nav, AudienceToggle, DownloadBlock, PhoneMockup, FeatureCard, StepList,
                          MilestoneList, OfferCard, FAQAccordion, LeadForm, Footer, CTABand, …
 src/components/Phone3D   CSS 3D stage: pointer tilt, scroll rotation, screen crossfade, parallax layers
-src/components/screens/  Coded app screens that replace screenshots with banned wording
+src/components/HeroVisual  Landing hero: entrance sequence, unlock moment, 3D orbit of reward icons
+src/components/HowItWorks  Four steps with animated illustrations (no app screens)
 public/brand/            Official LinkedIn "In" mark (used as a CSS mask in the footer)
 scripts/                 Content preparation, copy checker, social check, layout audit
 ```
@@ -92,7 +104,7 @@ Edit the files in `src/content/`. The components contain no marketing copy.
 
 Either replace the file in `website-assets/` with the same name, or point the slot at a new file in `SCREENSHOTS` (`src/config/app.ts`). Every page and the 3D phones read from there. The phone frame takes the screenshot's own shape, so screenshots are never cropped (`object-fit: contain`; the copy checker fails on `object-cover`). Partial screenshots (Discover, Offers) are shown as screen cards, not full phones.
 
-Five founder screenshots contain banned wording and are **not used** (buyer-01, buyer-02, buyer-05, seller-01, seller-05b). Those moments are rebuilt as coded screens in `src/components/screens/Screens.tsx` with fictional "Sample" merchants labelled "Example". When corrected originals arrive, remove them from `EXCLUDED` in `scripts/copy-assets.mjs`, add the slot back to `SCREENSHOTS`, and swap the coded screen where it is used. The remaining screenshots are still unaudited placeholders (context file §8.4–8.5).
+Only **clean original screenshots** are used (founder decision): no made-up screens. Six originals stay unpublished until corrected versions arrive, because they show banned wording, a location or a sample phone number: buyer-01, buyer-02, buyer-03, buyer-05, seller-01, seller-05b (`EXCLUDED` in `scripts/copy-assets.mjs`). When a corrected file arrives, drop it from `EXCLUDED` and add a slot to `SCREENSHOTS`. `copy-assets` also trims baked-in white margins from every screenshot (they showed as blank bars in the phone frames) and records the final sizes in `src/config/generated/screenshots.json`.
 
 ### Update legal text
 
@@ -101,9 +113,9 @@ Replace the `.docx` in the project root (same filename) and run `npm run prepare
 ### Go live
 
 1. Set `NEXT_PUBLIC_PLAY_STORE_URL` to the real listing. The QR code is generated from it.
-2. Replace the placeholder store buttons in `src/components/DownloadBlock.tsx` with the official Google Play and App Store badge artwork. Do not redraw them.
-3. Replace the SAMPLE screenshots.
-4. Set `NEXT_PUBLIC_SHOW_SAMPLE_MARKER=false`.
+2. The Google Play badge is the official artwork (`public/brand/`). iOS shows the text "Coming soon to iOS"; set `NEXT_PUBLIC_APP_STORE_URL` at iOS launch and it becomes a "Download for iOS" link (add Apple's official badge then). Set `NEXT_PUBLIC_SELLER_PLAY_STORE_URL` for the merchant page.
+3. Send corrected screenshots for the six unpublished screens (see "Swap a screenshot").
+4. Set `(no sample markers to switch off)`.
 5. Connect the lead form endpoint.
 6. Resolve the legal open items (below).
 
@@ -119,7 +131,7 @@ Replace the `.docx` in the project root (same filename) and run `npm run prepare
 - **Never clip product graphics**: containers clip only a separate `aria-hidden pointer-events-none` decoration layer; tilted elements sit in padded stages. `npm run audit:layout` checks this.
 - **Mobile**: 44 px minimum tap targets, no hover-only content, `svh` units instead of `100vh`, `viewport-fit=cover` with safe-area padding, `overflow-x: clip` (keeps `position: sticky` working on iOS).
 - Page transitions are a 400 ms fade on client navigations only (never on first load).
-- Coded screens are `role="img"` with a text description; pinned scenes announce the current step in a polite live region.
+- Decorative motion is `aria-hidden`; pinned scenes announce the current step in a polite live region.
 
 ## Social links
 
@@ -140,6 +152,10 @@ From the context file and the finishing pass. No invented numbers, testimonials 
 - No business-speak aimed at customers: no "footfall", "sales", "revenue", "boost your numbers".
 - No points system, NFC, payments/UPI/POS/CRM claims, or security claims as marketing.
 - Never mention "My Services".
+- No location claims (no "Bengaluru", "Bangalore", "Electronic City"). The footer company address is the only exception.
+- Don't pitch "free": customers should feel empowered, not sympathised with.
+- No "SAMPLE"/"Example" placeholders or made-up screens on the site.
+- Customer pages never show merchant-side wording ("Seller App", "commission", "your customers"…). The built-page check also fails if anything outside the footer links to `/merchants/`.
 - Gentle game only: milestones as a path, rewards you unlock. No randomness, countdowns, streak penalties, "losing progress" messages, comparisons or leaderboards.
 - The six legal pages are verbatim and excluded from these checks.
 

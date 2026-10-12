@@ -12,8 +12,8 @@ const devanagari = Noto_Sans_Devanagari({ subsets: ["devanagari"], weight: ["400
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: "Puraskrit | Loyalty for your favourite local places", template: "%s | Puraskrit" },
-  description: "Discover local businesses, track your loyalty, unlock rewards and discover offers. Free for customers. Currently available in Bengaluru.",
+  title: { default: "Puraskrit | Your loyalty has value. Claim it.", template: "%s | Puraskrit" },
+  description: "Your loyalty has value. Discover places, track your progress and unlock rewards with Puraskrit.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48" },

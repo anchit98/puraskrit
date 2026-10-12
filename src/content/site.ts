@@ -1,58 +1,43 @@
-/** Navigation and footer content (context file §4.1, §6.1 footer). */
+/**
+ * Footer and legal-link content. The header has no links: logo + download only.
+ * The merchant page is reachable only from the footer ("Partner with us").
+ */
 
 export type NavLink = { label: string; href: string };
+export type Audience = "customer" | "merchant";
 
-export const NAV = {
-  customers: {
-    links: [
-      { label: "How it works", href: "/how-it-works/" },
-      { label: "Rewards", href: "/rewards/" },
-      { label: "Discover", href: "/discover/" },
-      { label: "FAQ", href: "/faq/" },
-    ] as NavLink[],
-    cta: { label: "Get the app", href: "/#download" },
-  },
-  merchants: {
-    links: [
-      { label: "How it works", href: "/merchants/how-it-works/" },
-      { label: "Loyalty programmes", href: "/merchants/loyalty/" },
-      { label: "Offers", href: "/merchants/offers/" },
-      { label: "FAQ", href: "/merchants/faq/" },
-    ] as NavLink[],
-    cta: { label: "Join as merchant", href: "/merchants/join/" },
-  },
+/** Merchant audience: the merchant page and the three merchant legal documents. */
+export const audienceForPath = (path: string): Audience =>
+  path.startsWith("/merchants") || path.startsWith("/legal/merchant-") ? "merchant" : "customer";
+
+/** Three legal documents per audience, with short titles. Document text stays verbatim. */
+export const LEGAL_LINKS: Record<Audience, NavLink[]> = {
+  customer: [
+    { label: "Terms of Use", href: "/legal/customer-terms-of-use/" },
+    { label: "Privacy Policy", href: "/legal/customer-privacy/" },
+    { label: "Terms and Conditions", href: "/legal/customer-terms/" },
+  ],
+  merchant: [
+    { label: "Terms of Use", href: "/legal/merchant-terms-of-use/" },
+    { label: "Privacy Policy", href: "/legal/merchant-privacy/" },
+    { label: "Terms and Conditions", href: "/legal/merchant-terms/" },
+  ],
 };
 
-export const LEGAL_LINKS: NavLink[] = [
-  { label: "Customer Terms & Conditions", href: "/legal/customer-terms/" },
-  { label: "Customer Privacy Policy", href: "/legal/customer-privacy/" },
-  { label: "Customer Terms of Use", href: "/legal/customer-terms-of-use/" },
-  { label: "Merchant Terms & Conditions", href: "/legal/merchant-terms/" },
-  { label: "Merchant Privacy Policy", href: "/legal/merchant-privacy/" },
-  { label: "Merchant Terms of Use", href: "/legal/merchant-terms-of-use/" },
-];
-
-export const FOOTER_COLUMNS: { title: string; links: NavLink[] }[] = [
-  {
-    title: "Customers",
+export const FOOTER = {
+  company: [
+    { label: "About", href: "/about/" },
+    { label: "FAQ", href: "/faq/" },
+  ] as NavLink[],
+  /** The only merchant entry points on the whole site (like Zomato's "For Restaurants"). */
+  forMerchants: {
+    title: "For merchants",
     links: [
-      { label: "Get the app", href: "/#download" },
-      ...NAV.customers.links,
-    ],
+      { label: "Partner with us", href: "/merchants/" },
+      { label: "Contact", href: "/merchants/#contact" },
+    ] as NavLink[],
   },
-  {
-    title: "Merchants",
-    links: [
-      { label: "For merchants", href: "/merchants/" },
-      ...NAV.merchants.links,
-      { label: "Join as merchant", href: "/merchants/join/" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "/about/" },
-      { label: "Contact", href: "/contact/" },
-    ],
-  },
-];
+  /** Shown on merchant pages instead. */
+  forCustomers: { title: "For customers", links: [{ label: "Get the app", href: "/#download" }] as NavLink[] },
+  tagline: { customer: "Your loyalty, rewarded.", merchant: "Bring your regulars back." },
+};

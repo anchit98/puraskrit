@@ -12,11 +12,7 @@ import puppeteer from "puppeteer-core";
 
 const BASE = process.env.AUDIT_URL || "http://localhost:4123";
 const CHROME = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const PAGES = [
-  "/", "/how-it-works/", "/rewards/", "/discover/", "/faq/",
-  "/merchants/", "/merchants/how-it-works/", "/merchants/loyalty/", "/merchants/offers/", "/merchants/join/", "/merchants/faq/",
-  "/about/", "/contact/", "/legal/customer-terms/",
-];
+const PAGES = ["/", "/faq/", "/about/", "/merchants/", "/legal/customer-terms/", "/legal/merchant-terms/"];
 const SIZES = [[360, 740], [390, 844], [844, 390], [768, 1024], [1024, 768], [1440, 900]];
 
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: "new" });

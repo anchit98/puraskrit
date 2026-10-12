@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { LegalDoc } from "@/content/legal/meta";
-import { LEGAL_LINKS } from "@/content/site";
+import { LEGAL_LINKS, audienceForPath } from "@/content/site";
 import { Icon } from "./Icon";
 
 /**
@@ -42,7 +42,7 @@ export function LegalDocument({ doc, flags, current }: { doc: LegalDoc; flags: s
           <nav aria-label="Legal documents" className="mt-0 lg:mt-8">
             <p className="text-overline mb-3 text-muted">Legal documents</p>
             <ul className="lg:space-y-1.5">
-              {LEGAL_LINKS.map((l) => (
+              {LEGAL_LINKS[audienceForPath(current)].map((l) => (
                 <li key={l.href}>
                   <Link
                     href={l.href}

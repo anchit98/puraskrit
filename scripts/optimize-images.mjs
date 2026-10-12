@@ -6,19 +6,21 @@ import sharp from "sharp";
 
 const DIR = "public/assets";
 const files = readdirSync(DIR).filter((f) => /^(buyer|seller|logo)[^.]*\.png$/.test(f));
+// Screenshots are re-trimmed on every run, so always regenerate their WebP files.
+const always = (f) => /^(buyer|seller)/.test(f);
 
 let made = 0;
 for (const file of files) {
   const src = join(DIR, file);
   const out = src.replace(/\.png$/, ".webp");
-  if (!(existsSync(out) && statSync(out).mtimeMs >= statSync(src).mtimeMs)) {
+  if (always(file) || !(existsSync(out) && statSync(out).mtimeMs >= statSync(src).mtimeMs)) {
     await sharp(src).webp({ quality: 88 }).toFile(out);
     made++;
   }
   // Phones display screenshots at ≤ 300 px wide, so a 600 px variant covers 2x screens.
   if (file.startsWith("buyer") || file.startsWith("seller")) {
     const small = src.replace(/\.png$/, "-600.webp");
-    if (!(existsSync(small) && statSync(small).mtimeMs >= statSync(src).mtimeMs)) {
+    if (always(file) || !(existsSync(small) && statSync(small).mtimeMs >= statSync(src).mtimeMs)) {
       await sharp(src).resize({ width: 600, withoutEnlargement: true }).webp({ quality: 86 }).toFile(small);
       made++;
     }

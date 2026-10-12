@@ -41,10 +41,10 @@ export function SectionHeading({
   return (
     <Reveal className={`max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
       {overline && <p className="text-overline text-primary mb-3">{overline}</p>}
-      <As id={id} className={As === "h1" ? "text-display" : "text-headline-lg"}>
+      <As id={id} className="text-display">
         {title}
       </As>
-      {body && <div className="mt-4 text-body-lg text-muted">{body}</div>}
+      {body && <div className="mt-4 text-body-lg text-muted md:text-[20px] md:leading-[30px]">{body}</div>}
     </Reveal>
   );
 }

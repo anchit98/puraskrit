@@ -46,7 +46,6 @@ export function OfferFan() {
           <PhoneMockup screens={[{ shot: "sellerOfferDetails" }]} />
         </motion.span>
       </span>
-      <span className="mt-4 block text-center text-label-sm text-muted">{fine ? "Hover or click to fan out" : "Tap to fan out"}</span>
     </button>
   );
 }

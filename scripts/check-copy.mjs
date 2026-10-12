@@ -18,7 +18,7 @@ const BANNED = [
   { re: /\bhook(s|ed)?\b|lock-in|\btrap(s|ped)?\b|\bpressure\b/i, why: "Manipulative wording banned (hook, lock-in, trap, pressure)" },
   { re: /miss out|limited time|\bhurry\b|only \w+ left|free money|\bcheap\b|boost your numbers/i, why: "Urgency/scarcity wording banned" },
   // Earlier rules
-  { re: /\bpoints?\b/i, why: "Puraskrit has no points system" },
+  { re: /\bpoints?\b(?!=)/i, why: "Puraskrit has no points system" },
   { re: /my services|my spends/i, why: "My Services is excluded from the website (founder, 8 Oct 2026)" },
   { re: /\bNFC\b/, why: "NFC is not live" },
   { re: /UPI app|payment gateway/i, why: "Not a payments product" },
@@ -27,6 +27,15 @@ const BANNED = [
   { re: /testimonial|\b\d[\d,]*\+ (merchants|users|customers)\b/i, why: "No testimonials or traction numbers" },
   { re: /₹\[INSERT|per month|per year|\/month|free trial/i, why: "Merchant pricing is hidden" },
   { re: /AES-256|ISO 27001/i, why: "Security claims are not to be used as marketing (open item #5)" },
+  // Customer-first revamp (Oct 2026)
+  { re: /Bengaluru|Bangalore|Electronic City/i, why: "No location claims anywhere (the footer company address is the only exception)" },
+  { re: /free to use|free for customers/i, why: "Don't pitch 'free'; customers should feel empowered, not sympathised with" },
+  { re: /\bSAMPLE\b|\bExample\b|\bSample [A-Z]/, why: "No sample/example placeholders on the site (founder, Oct 2026)" },
+];
+
+/** On customer pages (everything except /merchants/), outside the footer: no merchant-side wording. */
+const CUSTOMER_ONLY = [
+  { re: /Seller App|commission|Partner with us|your customers|Join as merchant|For merchants/i, why: "Merchant-side wording on a customer page (only the footer may link to /merchants/)" },
 ];
 const LAYOUT = [{ re: /object-(cover|fill)\b/, why: "Screenshots must use object-fit: contain, never cover/fill (no cropped product graphics)" }];
 
@@ -70,7 +79,9 @@ function scanBuilt() {
   };
   walk("out");
   for (const file of pages) {
-    const html = readFileSync(file, "utf8");
+    // The footer carries the registered company address and the one "Partner with us" link.
+    const html = readFileSync(file, "utf8").replace(/<footer[\s\S]*?<\/footer>/gi, " ");
+    const isMerchantPage = file.startsWith(join("out", "merchants"));
     // Visible text (scripts/styles removed) plus user-facing attributes.
     const text = html
       .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -80,7 +91,9 @@ function scanBuilt() {
       .replace(/&#x27;|&#39;/g, "'")
       .replace(/\s+/g, " ");
     const attrs = [...html.matchAll(/\b(?:alt|aria-label|title|content|placeholder)="([^"]*)"/gi)].map((m) => m[1]).join(" | ");
-    for (const { re, why } of BANNED) {
+    const rules = isMerchantPage ? BANNED : [...BANNED, ...CUSTOMER_ONLY];
+    if (!isMerchantPage && /href="\/merchants\//.test(html)) hits.push(`${file}  Links to /merchants/ outside the footer (the footer row is the only entry point)`);
+    for (const { re, why } of rules) {
       for (const [where, hay] of [["text", text], ["attributes", attrs]]) {
         const m = hay.match(new RegExp(re.source, re.flags.includes("i") ? "i" : ""));
         if (m) {

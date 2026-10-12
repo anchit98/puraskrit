@@ -36,7 +36,7 @@ function useTrack() {
  * glow and its card appears. Tapping a milestone card scrolls to that point.
  * Gentle by design: fixed, visible levels; no randomness, countdowns or comparisons.
  */
-export function MilestoneExplorer({ audience = "customer" }: { audience?: "customer" | "merchant" }) {
+export function MilestoneExplorer() {
   const ref = useRef<HTMLDivElement>(null);
   const tier = useMotionTier();
   const track = useTrack();
@@ -60,7 +60,7 @@ export function MilestoneExplorer({ audience = "customer" }: { audience?: "custo
 
   const unlocked = M.filter((m) => amount >= m.unlocksAt).length;
   const next = M.find((m) => amount < m.unlocksAt);
-  const copy = JOURNEY[audience];
+  const copy = JOURNEY;
   const animate = tier !== "none";
 
   return (
@@ -74,7 +74,6 @@ export function MilestoneExplorer({ audience = "customer" }: { audience?: "custo
         <div className="border-b border-outline p-6 md:p-8 lg:border-b-0 lg:border-r">
           <div className="flex items-center justify-between">
             <p className="text-overline text-muted">{copy.readoutOverline}</p>
-            <span className="rounded-full bg-tag px-2.5 py-0.5 text-label-sm text-navy">Example</span>
           </div>
           <p className="mt-4 text-title-md">{copy.readoutLabel}</p>
           <p className="text-display mt-1 !text-[40px] tabular-nums">{formatINR(amount)}</p>
@@ -139,19 +138,18 @@ function MilestoneCard({ m, on, onClick, compact = false }: { m: (typeof M)[numb
     <button
       type="button"
       onClick={onClick}
-      aria-label={`${m.label}: ${m.reward}, ${unlocksAt(m.unlocksAt)}${on ? ", unlocked" : ""}. Show this milestone on the journey.`}
       className={`block min-h-11 rounded-[16px] border bg-card p-3 text-left shadow-[0_12px_30px_rgba(26,43,74,0.1)] transition-[border-color,box-shadow,transform] duration-[550ms] ease-out ${
         compact ? "w-[176px]" : "w-full"
       } ${on ? "border-primary/40 ring-4 ring-primary/10" : "border-outline"}`}
     >
       <span className="flex items-center justify-between gap-2">
         <span className="text-label-sm text-muted">{m.label}</span>
-        <span className={`flex items-center gap-1 text-label-sm text-navy transition-opacity duration-500 ${on ? "opacity-100" : "opacity-0"}`}>
+        <span aria-hidden={!on} className={`flex items-center gap-1 text-label-sm text-navy transition-opacity duration-500 ${on ? "opacity-100" : "opacity-0"}`}>
           <span className="h-2 w-2 rounded-full bg-accent-green" />
           Unlocked
         </span>
       </span>
-      <span className="mt-1 block font-headline text-[15px] font-bold leading-snug text-navy">🎁 {m.reward}</span>
+      <span className="mt-1 block font-headline text-[15px] font-bold leading-snug text-navy"><span aria-hidden>🎁 </span>{m.reward}</span>
       <span className="mt-0.5 block text-body-sm text-muted">{unlocksAt(m.unlocksAt)}</span>
     </button>
   );

@@ -36,7 +36,7 @@ const INITIAL: Values = {
   email: "",
   category: "",
   locality: "",
-  city: "Bengaluru",
+  city: "",
   message: "",
   consent: false,
   website: "",
@@ -180,7 +180,7 @@ export function LeadForm() {
           </div>
         </Field>
         <Field id="locality" label="Locality / area" required error={err("locality")}>
-          <input id="lead-locality" autoComplete="address-level3" placeholder="e.g. Electronic City" value={values.locality} onChange={(e) => set("locality", e.target.value)} onBlur={() => blur("locality")} {...aria("locality", err("locality"))} className={inputCls(err("locality"))} />
+          <input id="lead-locality" autoComplete="address-level3" placeholder="e.g. your area" value={values.locality} onChange={(e) => set("locality", e.target.value)} onBlur={() => blur("locality")} {...aria("locality", err("locality"))} className={inputCls(err("locality"))} />
         </Field>
         <Field id="city" label="City" required error={err("city")}>
           <input id="lead-city" autoComplete="address-level2" value={values.city} onChange={(e) => set("city", e.target.value)} onBlur={() => blur("city")} {...aria("city", err("city"))} className={inputCls(err("city"))} />
@@ -243,7 +243,7 @@ export function LeadForm() {
         disabled={status === "sending"}
         className="mt-7 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-8 text-label-lg text-on-primary shadow-[0_8px_24px_rgba(37,99,235,0.28)] transition hover:-translate-y-0.5 active:scale-[0.98] active:bg-on-primary-container disabled:opacity-70 md:w-auto"
       >
-        {status === "sending" ? "Sending…" : "Join as merchant"}
+        {status === "sending" ? "Sending…" : "Send"}
         {status !== "sending" && <Icon name="arrowRight" size={18} />}
       </button>
     </form>

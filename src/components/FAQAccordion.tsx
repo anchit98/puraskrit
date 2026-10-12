@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useId, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { DURATION, EASE_OUT } from "@/config/motion";
@@ -19,14 +18,14 @@ export function FAQAccordion({ items }: { items: FAQ[] }) {
         const panel = `${base}-p${i}`;
         return (
           <div key={f.q}>
-            <h3>
+            <h2>
               <button
                 id={btn}
                 type="button"
                 aria-expanded={isOpen}
                 aria-controls={panel}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left text-title-md transition-colors hover:bg-surface md:px-7"
+                className="flex w-full items-center justify-between gap-4 px-5 py-6 text-left font-headline text-headline-sm transition-colors hover:bg-surface md:px-7"
               >
                 {f.q}
                 <span
@@ -37,7 +36,7 @@ export function FAQAccordion({ items }: { items: FAQ[] }) {
                   <Icon name="chevronDown" size={18} />
                 </span>
               </button>
-            </h3>
+            </h2>
             <AnimatePresence initial={false}>
               {isOpen && (
                 <motion.div
@@ -50,14 +49,8 @@ export function FAQAccordion({ items }: { items: FAQ[] }) {
                   transition={{ duration: reduce ? DURATION.reduced : DURATION.fast, ease: EASE_OUT }}
                   className="overflow-hidden"
                 >
-                  <div className="px-5 pb-5 text-body-lg text-muted md:px-7">
+                  <div className="px-5 pb-6 text-[18px] leading-[28px] text-muted md:px-7">
                     <p>{f.a}</p>
-                    {f.link && (
-                      <Link href={f.link.href} className="mt-1 inline-flex min-h-11 items-center gap-1 text-label-md text-primary hover:underline">
-                        {f.link.label}
-                        <Icon name="arrowRight" size={16} />
-                      </Link>
-                    )}
                   </div>
                 </motion.div>
               )}

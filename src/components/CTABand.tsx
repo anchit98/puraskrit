@@ -16,10 +16,10 @@ export function CTABand({ title, body, children, id }: { title: string; body?: s
             </div>
             <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_auto]">
               <div>
-                <h2 id={id ? `${id}-title` : undefined} className="text-headline-lg max-w-xl">
+                <h2 id={id ? `${id}-title` : undefined} className="text-display max-w-xl">
                   {title}
                 </h2>
-                {body && <p className="mt-3 text-body-lg text-muted">{body}</p>}
+                {body && <p className="mt-4 text-body-lg text-muted md:text-[20px]">{body}</p>}
               </div>
               <div>{children}</div>
             </div>

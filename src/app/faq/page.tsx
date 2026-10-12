@@ -11,7 +11,7 @@ import { SITE } from "@/config/app";
 
 export const metadata = pageMeta({
   title: "FAQ",
-  description: "Answers to common questions about Puraskrit for customers: cost, payments, rewards, redemption, your data, account deletion and iOS.",
+  description: "Quick answers about Puraskrit: cost, payments, rewards, your data and iPhone.",
   path: "/faq/",
 });
 
@@ -19,15 +19,13 @@ export default function FAQPage() {
   return (
     <>
       <PageHero
-        overline="FAQ"
-        title="Questions, answered."
+        title="Questions? Answered."
         body={
           <p>
-            Can&apos;t find what you need? Email{" "}
+            Something else?{" "}
             <a href={`mailto:${SITE.email}`} className="text-primary hover:underline">
               {SITE.email}
             </a>
-            .
           </p>
         }
       />
@@ -36,7 +34,7 @@ export default function FAQPage() {
           <FAQAccordion items={CUSTOMER_FAQ} />
         </Reveal>
       </Section>
-      <CTABand id="get-the-app" title={CLOSING_CTA.title} body={CLOSING_CTA.body}>
+      <CTABand id="get-the-app" title={CLOSING_CTA.faq.title} body={CLOSING_CTA.faq.line}>
         <div className="w-full lg:w-[480px]">
           <DownloadBlock headingLevel="h3" />
         </div>

@@ -10,7 +10,8 @@ for (const [, , name, url, hostsRaw] of rows) {
   if (!url) { problems.push(`${name}: no URL yet (hidden in production)`); continue; }
   try {
     const u = new URL(url);
-    if (u.protocol !== "https:" || !hosts.includes(u.hostname) || u.pathname.length <= 1) problems.push(`${name}: "${url}" is not a valid ${name} profile URL (hidden in production)`);
+    if (u.protocol !== "https:" || !hosts.includes(u.hostname)) problems.push(`${name}: "${url}" is not a valid ${name} URL (hidden in production)`);
+    else if (u.pathname.length <= 1) problems.push(`${name}: still the platform home page placeholder (${url}); replace with the Puraskrit profile URL`);
   } catch { problems.push(`${name}: "${url}" is not a URL (hidden in production)`); }
 }
 if (rows.length !== 4) problems.push(`expected 4 social entries, found ${rows.length}`);

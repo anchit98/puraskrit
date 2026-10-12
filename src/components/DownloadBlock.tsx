@@ -13,7 +13,7 @@ import { Tilt3D } from "./Tilt3D";
 export function DownloadBlock({ id, headingLevel = "h2" }: { id?: string; headingLevel?: "h2" | "h3" }) {
   const H = headingLevel;
   return (
-    <div id={id} className="scroll-mt-28">
+    <div id={id} className="scroll-mt-6">
       {/* Desktop / tablet */}
       <div className="hidden md:block">
         <Tilt3D className="rounded-[24px]">
@@ -40,7 +40,7 @@ export function DownloadBlock({ id, headingLevel = "h2" }: { id?: string; headin
 
       {/* Mobile */}
       <div className="md:hidden">
-        <StoreBadges height={52} className="justify-center" />
+        <StoreBadges height={58} className="justify-center" />
       </div>
     </div>
   );

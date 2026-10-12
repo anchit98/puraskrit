@@ -28,14 +28,14 @@ export default function AboutPage() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <SectionHeading id="why-title" overline={ABOUT.why.overline} title={ABOUT.why.title} />
-            <div className="mt-6 max-w-2xl space-y-4 text-[18px] leading-[30px] text-muted">
+            <div className="mt-6 max-w-2xl space-y-4 text-[18px] leading-[30px] text-muted max-md:mx-auto max-md:text-center">
               {ABOUT.why.paragraphs.map((p) => (
                 <Reveal key={p}>
                   <p>{p}</p>
                 </Reveal>
               ))}
             </div>
-            <p className="mt-6 text-body-md text-muted">Puraskrit is built by {SITE.company}.</p>
+            <p className="mt-6 text-body-md text-muted max-md:text-center">Puraskrit is built by {SITE.company}.</p>
           </div>
           <FloatingPhone screens={[{ shot: "buyerLanding" }]} />
         </div>
@@ -65,7 +65,7 @@ export default function AboutPage() {
           {ABOUT.promise.items.map((p, i) => (
             <li key={p.title}>
               <Reveal delay={i * STAGGER} className="h-full">
-                <div className="flex h-full items-start gap-5 rounded-[20px] border border-outline bg-surface p-6 md:p-7">
+                <div className="flex h-full items-start gap-5 rounded-[20px] border border-outline bg-surface p-6 max-md:flex-col max-md:items-center max-md:text-center md:p-7">
                   <IconBubble name={p.icon} size={52} />
                   <div>
                     <h3 className="text-headline-sm">{p.title}</h3>

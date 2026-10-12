@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { SCREENSHOTS, type ScreenshotKey } from "@/config/app";
 import { LazyMount } from "./LazyMount";
+import { SafeImage } from "./SafeImage";
 
 /** One screen inside a phone: a founder screenshot or a coded screen (see components/screens). */
 export type ScreenItem = { shot: ScreenshotKey; label?: never; node?: never } | { node: ReactNode; label: string; shot?: never };
@@ -17,18 +18,16 @@ function ScreenContent({ item, priority, lazy }: { item: ScreenItem; priority?: 
   if (item.shot) {
     const s = SCREENSHOTS[item.shot];
     return (
-      <picture>
-        <source type="image/webp" srcSet={`${s.webpSmall} ${Math.min(600, s.width)}w, ${s.webp} ${s.width}w`} sizes="(max-width: 640px) 60vw, 300px" />
-        <img
-          src={s.src}
-          alt={s.alt}
-          width={s.width}
-          height={s.height}
-          loading={priority ? "eager" : "lazy"}
-          decoding="async"
-          className="block h-full w-full object-contain"
-        />
-      </picture>
+      <SafeImage
+        src={s.src}
+        srcSet={`${s.webpSmall} ${Math.min(600, s.width)}w, ${s.webp} ${s.width}w`}
+        sizes="(max-width: 640px) 60vw, 300px"
+        alt={s.alt}
+        width={s.width}
+        height={s.height}
+        loading={priority ? "eager" : "lazy"}
+        className="block h-full w-full"
+      />
     );
   }
   return (
@@ -102,10 +101,15 @@ export function ScreenCard({ shot, className = "" }: { shot: ScreenshotKey; clas
   const s = SCREENSHOTS[shot];
   return (
     <figure className={`relative mx-auto w-full rounded-[22px] border border-outline bg-card p-2 shadow-[0_24px_60px_rgba(26,43,74,0.14)] ${className}`}>
-      <picture>
-        <source type="image/webp" srcSet={`${s.webpSmall} ${Math.min(600, s.width)}w, ${s.webp} ${s.width}w`} sizes="(max-width: 640px) 90vw, 340px" />
-        <img src={s.src} alt={s.alt} width={s.width} height={s.height} loading="lazy" decoding="async" className="block h-auto w-full rounded-[16px] object-contain" />
-      </picture>
+      <SafeImage
+        src={s.src}
+        srcSet={`${s.webpSmall} ${Math.min(600, s.width)}w, ${s.webp} ${s.width}w`}
+        sizes="(max-width: 640px) 90vw, 340px"
+        alt={s.alt}
+        width={s.width}
+        height={s.height}
+        className="block h-auto w-full rounded-[16px]"
+      />
     </figure>
   );
 }

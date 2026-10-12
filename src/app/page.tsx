@@ -31,12 +31,12 @@ export default function HomePage() {
           <div className="bg-grid absolute inset-0 opacity-50" />
         </div>
         <div className="container-page relative grid items-center gap-6 pb-12 pt-8 md:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:pb-16 hero-tall:min-h-[calc(100svh-72px)]">
-          <div>
-            <h1 id="hero-title" className="text-display max-w-[14ch] lg:!text-[64px] lg:!leading-[1.05]">
+          <div className="max-md:text-center">
+            <h1 id="hero-title" className="text-display max-w-[14ch] max-md:mx-auto lg:!text-[64px] lg:!leading-[1.05]">
               {HOME_HERO.title}
             </h1>
-            <p className="mt-6 max-w-xl text-[20px] leading-[30px] text-muted md:text-[22px] md:leading-[32px]">{HOME_HERO.line}</p>
-            <div className="mt-10 max-w-[540px]">
+            <p className="mt-6 max-w-xl text-[20px] leading-[30px] text-muted max-md:mx-auto md:text-[22px] md:leading-[32px]">{HOME_HERO.line}</p>
+            <div className="mt-10 max-w-[540px] max-md:mx-auto">
               <DownloadBlock id="download" />
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function HomePage() {
           {YOURS_SECTION.tiles.map((t, i) => (
             <li key={t.title}>
               <Reveal delay={i * STAGGER} className="h-full">
-                <div className="flex h-full flex-col items-start gap-4 rounded-[20px] border border-outline bg-card p-6">
+                <div className="flex h-full flex-col items-start gap-4 rounded-[20px] border border-outline bg-card p-6 max-md:items-center max-md:text-center">
                   <IconBubble name={t.icon} size={48} />
                   <p className="font-headline text-headline-sm">{t.title}</p>
                 </div>

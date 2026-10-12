@@ -39,7 +39,7 @@ export function SectionHeading({
 }) {
   const center = align === "center";
   return (
-    <Reveal className={`max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
+    <Reveal className={`max-w-2xl max-md:mx-auto max-md:text-center ${center ? "mx-auto text-center" : ""}`}>
       {overline && <p className="text-overline text-primary mb-3">{overline}</p>}
       <As id={id} className="text-display">
         {title}

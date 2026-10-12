@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import { SELLER_APP_LINKS } from "@/config/app";
 import { audienceForPath } from "@/content/site";
 import { Logo, MerchantLogo } from "./Logo";
@@ -16,29 +15,19 @@ import { buttonClass } from "./Button";
 export function Nav() {
   const pathname = usePathname() || "/";
   const merchant = audienceForPath(pathname) === "merchant";
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 pt-[env(safe-area-inset-top)] transition-[background-color,border-color] duration-[400ms] ${
-        scrolled ? "border-b border-outline bg-surface/95 backdrop-blur-xl" : "border-b border-transparent bg-transparent"
-      }`}
+      className="relative z-50 border-b border-transparent bg-transparent pt-[env(safe-area-inset-top)]"
     >
       <a href="#main" className="sr-only-focusable absolute left-4 top-3 z-50 rounded-full bg-primary px-4 py-2 text-label-md text-on-primary">
         Skip to content
       </a>
-      <div className="container-page flex h-[72px] items-center justify-between gap-4">
-        {merchant ? <MerchantLogo height={40} /> : <Logo height={32} />}
+      <div className="container-page flex h-[84px] items-center justify-center gap-4 sm:justify-between">
+        {merchant ? <MerchantLogo height={48} imgClassName="max-sm:!h-[50px]" /> : <Logo height={40} imgClassName="max-sm:!h-[46px]" />}
         {merchant ? (
-          <div className="flex items-center gap-3">
-            <StoreBadges height={40} playUrl={SELLER_APP_LINKS.playStoreUrl} showIOS={false} className="hidden sm:flex" />
+          <div className="hidden items-center gap-3 sm:flex">
+            <StoreBadges height={40} playUrl={SELLER_APP_LINKS.playStoreUrl} showIOS={false} />
             <Link href="#contact" className={`${buttonClass("primary")} !h-11 whitespace-nowrap !px-5 !text-label-md`}>
               Get in touch
             </Link>
@@ -46,7 +35,6 @@ export function Nav() {
         ) : (
           <>
             <StoreBadges height={40} className="hidden sm:flex" />
-            <StoreBadges height={40} showIOS={false} className="sm:hidden" />
           </>
         )}
       </div>

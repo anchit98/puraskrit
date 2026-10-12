@@ -15,7 +15,7 @@ export function FloatingPhone({
 }) {
   return (
     <Reveal className={className}>
-      <Phone3D screens={screens} card={card} phoneClassName={card ? "max-w-[340px]" : "max-w-[270px]"} />
+      <Phone3D screens={screens} card={card} phoneClassName={card ? "max-w-[340px]" : "max-w-[310px] md:max-w-[270px]"} />
     </Reveal>
   );
 }

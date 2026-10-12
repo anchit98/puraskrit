@@ -8,7 +8,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 16px;
   -webkit-text-size-adjust: 100%;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -32,6 +32,19 @@ body {
   /* clip (not hidden): stops stray horizontal overflow without creating a scroll container,
      so position: sticky keeps working on iOS Safari. */
   overflow-x: clip;
+}
+
+/* Mobile: all text centred (founder, Oct 2026). Left-aligned form fields and legal text are exempt. */
+@media (max-width: 767px) {
+  main,
+  footer {
+    text-align: center;
+  }
+  main form,
+  main .legal-prose,
+  main [data-keep-left] {
+    text-align: left;
+  }
 }
 
 h1,

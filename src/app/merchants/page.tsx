@@ -28,13 +28,13 @@ export default function MerchantsPage() {
           <div className="bg-grid absolute inset-0 opacity-50" />
         </div>
         <div className="container-page relative grid items-center gap-6 pb-12 pt-8 md:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:pb-16 hero-tall:min-h-[calc(100svh-72px)]">
-          <div>
-            <h1 id="m-hero-title" className="text-display max-w-[16ch] lg:!text-[60px] lg:!leading-[1.06]">
+          <div className="max-md:text-center">
+            <h1 id="m-hero-title" className="text-display max-w-[16ch] max-md:mx-auto lg:!text-[60px] lg:!leading-[1.06]">
               {MERCHANT_HERO.title}{" "}
               <span className="text-primary">{MERCHANT_HERO.accent}</span>
             </h1>
-            <p className="mt-6 max-w-xl text-[20px] leading-[30px] text-muted md:text-[22px] md:leading-[32px]">{MERCHANT_HERO.line}</p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <p className="mt-6 max-w-xl text-[20px] leading-[30px] text-muted max-md:mx-auto md:text-[22px] md:leading-[32px]">{MERCHANT_HERO.line}</p>
+            <div className="mt-10 flex flex-wrap items-center gap-4 max-md:justify-center">
               <StoreBadges height={52} playUrl={SELLER_APP_LINKS.playStoreUrl} showIOS={false} />
               <ButtonLink href="#contact" variant="secondary" className="!h-[52px]">
                 Get in touch
@@ -55,7 +55,7 @@ export default function MerchantsPage() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading id="m-offers-title" title={MERCHANT_OFFERS.title} />
-            <ul className="mt-8 flex flex-wrap gap-3">
+            <ul className="mt-8 flex flex-wrap gap-3 max-md:justify-center">
               {MERCHANT_OFFERS.types.map((t) => (
                 <li key={t} className="rounded-full bg-card px-5 py-2.5 text-label-lg text-navy ring-1 ring-outline">
                   {t}
@@ -68,7 +68,7 @@ export default function MerchantsPage() {
       </Section>
 
       {/* Contact */}
-      <Section id="contact" tone="white" labelledBy="m-contact-title" className="scroll-mt-20">
+      <Section id="contact" tone="white" labelledBy="m-contact-title" className="scroll-mt-4">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionHeading id="m-contact-title" title={MERCHANT_CONTACT.title} body={<p>{MERCHANT_CONTACT.line}</p>} />
           <Reveal>

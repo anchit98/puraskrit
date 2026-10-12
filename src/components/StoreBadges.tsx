@@ -18,7 +18,7 @@ export function StoreBadges({
   const h = Math.max(40, height);
   const appStoreUrl = APP_LINKS.appStoreUrl;
   return (
-    <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 ${className}`}>
+    <div className={`flex flex-wrap items-center gap-x-4 gap-y-2 max-md:justify-center ${className}`}>
       <a href={playUrl} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 rounded-[10px] transition-transform duration-[400ms] hover:-translate-y-0.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={BADGES.play.src} alt={BADGES.play.alt} width={Math.round((BADGES.play.width / BADGES.play.height) * h)} height={h} style={{ height: h, width: "auto" }} />

@@ -25,7 +25,7 @@ export function OfferFan() {
       onClick={() => setOpen((v) => !v)}
       aria-label={open ? "Stack the offer screens" : "Fan out the offer screens"}
       aria-pressed={open}
-      className="relative mx-auto block w-full max-w-[520px] cursor-pointer rounded-[28px] px-[22%] pb-10 pt-6 text-left"
+      className="relative mx-auto block w-full max-w-[520px] cursor-pointer rounded-[28px] px-[14%] pb-10 pt-6 sm:px-[22%] text-left"
     >
       <span aria-hidden className="pointer-events-none absolute inset-x-[18%] inset-y-[12%] rounded-full bg-primary-container/70 blur-3xl" />
       <span className="relative grid [grid-template-areas:'stack'] place-items-center" style={{ perspective: 1400 }}>

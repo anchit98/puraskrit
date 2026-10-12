@@ -15,8 +15,8 @@ export function CTABand({ title, body, children, id }: { title: string; body?: s
               <div className="absolute -bottom-28 -left-16 h-64 w-64 rounded-full bg-icon-bg blur-3xl" />
             </div>
             <div className="relative grid items-center gap-8 lg:grid-cols-[1fr_auto]">
-              <div>
-                <h2 id={id ? `${id}-title` : undefined} className="text-display max-w-xl">
+              <div className="max-md:text-center">
+                <h2 id={id ? `${id}-title` : undefined} className="text-display max-w-xl max-md:mx-auto">
                   {title}
                 </h2>
                 {body && <p className="mt-4 text-body-lg text-muted md:text-[20px]">{body}</p>}

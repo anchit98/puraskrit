@@ -3,6 +3,7 @@ import { Inter, Manrope, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { OfflineNotice } from "@/components/OfflineNotice";
 import { SITE } from "@/config/app";
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <OfflineNotice />
       </body>
     </html>
   );

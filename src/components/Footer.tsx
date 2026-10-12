@@ -24,7 +24,7 @@ export function Footer() {
   return (
     <footer className="border-t border-outline bg-card pb-[env(safe-area-inset-bottom)]">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="space-y-4">
+        <div className="space-y-4 max-md:flex max-md:flex-col max-md:items-center">
           {merchant ? <MerchantLogo height={40} /> : <Logo height={30} />}
           <p className="font-headline text-headline-sm text-navy">{FOOTER.tagline[audience]}</p>
           <p className="text-body-md">
@@ -32,7 +32,9 @@ export function Footer() {
               {SITE.email}
             </a>
           </p>
-          <SocialLinks />
+          <div className="hidden md:block">
+            <SocialLinks />
+          </div>
         </div>
         {columns.map((col) => (
           <nav key={col.title} aria-label={col.title}>
@@ -51,12 +53,17 @@ export function Footer() {
             </ul>
           </nav>
         ))}
+        {/* Mobile: social icons come after the legal links */}
+        <div className="flex justify-center md:hidden">
+          <SocialLinks />
+        </div>
       </div>
       <div className="border-t border-outline">
-        <div className="container-page flex flex-col gap-2 py-6 text-body-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {SITE.company}</p>
-          {/* Registered company address (not a statement of where the app is available). */}
-          <p>{SITE.location}</p>
+        <div className="px-4 py-6 text-center text-[12px] leading-[18px] text-muted">
+          <p className="xl:whitespace-nowrap">
+            By continuing past this page, you agree to our Terms of Service, Cookie Policy, Privacy Policy and Content Policies. All trademarks are properties of their respective owners.
+          </p>
+          <p className="mt-2">© 2026 Puraskrit Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

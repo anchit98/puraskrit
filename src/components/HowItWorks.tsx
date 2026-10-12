@@ -25,7 +25,7 @@ export function HowItWorks({
   variant?: "customer" | "merchant";
 }) {
   const heading = (
-    <h2 id={headingId} className="text-display">
+    <h2 id={headingId} className="text-display max-md:text-center">
       {content.title}
     </h2>
   );
@@ -57,7 +57,7 @@ function Pinned({ heading, c, variant }: { heading: React.ReactNode; c: StepsCon
   };
   return (
     <div ref={outer} className="relative h-[230svh]">
-      <div className="sticky top-[72px] flex h-[calc(100svh-72px)] items-center">
+      <div className="sticky top-0 flex h-[100svh] items-center">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
           <div>
             {heading}
@@ -131,12 +131,12 @@ function Cards({ heading, c, variant }: { heading: React.ReactNode; c: StepsCont
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -10% 0px" }}
             transition={{ duration: reduce ? DURATION.reduced : DURATION.slow, ease: EASE_OUT, delay: reduce ? 0 : STAGGER }}
-            className="card grid grid-cols-[1fr_120px] items-center gap-4 p-5 sm:grid-cols-[1fr_180px]"
+            className="card grid grid-cols-1 items-center gap-5 p-5 max-md:text-center sm:grid-cols-[1fr_180px]"
           >
             <div>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-label-md text-on-primary">{i + 1}</span>
-              <p className="mt-3 font-headline text-headline-sm">{b.title}</p>
-              <p className="mt-1 text-body-md text-muted">{b.line}</p>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-label-md text-on-primary max-md:mx-auto">{i + 1}</span>
+              <p className="mt-3 font-headline text-headline-md md:text-headline-sm">{b.title}</p>
+              <p className="mt-1 text-body-lg text-muted md:text-body-md">{b.line}</p>
             </div>
             <CardIllustration beat={i} variant={variant} />
           </motion.li>
@@ -159,7 +159,7 @@ function CardIllustration({ beat, variant }: { beat: number; variant: Variant })
     return () => ro.disconnect();
   }, []);
   return (
-    <div ref={ref} className="relative aspect-square w-full overflow-hidden rounded-[20px] bg-surface" aria-hidden>
+    <div ref={ref} className="relative mx-auto aspect-square w-full max-w-[300px] overflow-hidden rounded-[20px] bg-surface sm:max-w-none" aria-hidden>
       <Illustration beat={beat} play={inView} scale={scale} variant={variant} />
     </div>
   );

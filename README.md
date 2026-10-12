@@ -1,32 +1,34 @@
 # Puraskrit website
 
-Marketing site for Puraskrit (पुरSkrit) by Asraubh Private Limited, Bengaluru.
+Marketing site for Puraskrit (पुरSkrit). Customer-first: the home page explains what the app is, how it works, and where to download it. Merchants have one separate page, reachable only from the footer.
 
-- **Customer-first.** `/` is one long, bold page: what Puraskrit is, how it works, and the download. FAQ, About and Contact are short pages linked from the footer.
-- **Merchants** have one page, `/merchants/` (Puraskrit Merchants logo, Seller App link, contact form). It is linked **only** from the footer row "Partner with us".
-- The header has no links: logo + store badges only. All links live in the footer.
+**Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Motion (animation). Everything visual is CSS/SVG (no WebGL). It builds to a **fully static export** (`out/`), so any static host works (Vercel, S3 + CloudFront, Amplify). There is no hosting-specific code.
 
-```
-/              Customer home          /merchants/     Partner with us (single merchant page + contact form)
-/faq/          Customer FAQ           /legal/[slug]/  6 verbatim legal pages
-/about/        About (3 sections)
-```
-
-Footer: **Puraskrit** (About, FAQ) · **For merchants** (Partner with us, Contact → `/merchants/#contact`) · **Legal** (3 docs) · social icons.
-
-Footer audience: on `/merchants/` and `/legal/merchant-*` the footer shows the 3 merchant legal docs and a "Get the app" link; everywhere else it shows the 3 customer docs and "Partner with us". The titles are always "Terms of Use", "Privacy Policy" and "Terms and Conditions" (`src/content/site.ts`).
-
-The source of truth for content and rules is `PURASKRIT_WEBSITE_CONTEXT_v2.md`. The design tokens come from `DESIGN.md`.
-
-**Stack:** Next.js 15 (App Router) + TypeScript + Tailwind CSS v4. 3D is pure CSS 3D transforms (no WebGL). Animation uses Motion. The site builds to a **fully static export** (`out/`), so it can be hosted on S3 + CloudFront, Amplify, or any static host. There is no hosting-specific code.
+Background documents in this repo: `DESIGN.md` (design tokens), `PURASKRIT_WEBSITE_CONTEXT_v2.md` (original brief), and [`docs/DECISIONS.md`](docs/DECISIONS.md) (decisions made since the brief, which **override** it where they differ).
 
 ---
+
+## Pages
+
+```
+/                 Customer home (one long page + download)
+/about/           About (3 sections)
+/faq/             FAQ (8 short questions)
+/merchants/       Puraskrit Merchants: Seller App link, steps, offers, contact form
+/legal/[slug]/    6 legal documents, rendered verbatim from the .docx files
+404               Custom "page not found"
+```
+
+- **Header (all pages):** logo + store badges only, no links. It scrolls with the page. On `/merchants/` it shows the Puraskrit Merchants logo and a "Get in touch" button.
+- **Footer (all pages):** Puraskrit (About, FAQ) · For merchants (Partner with us, Contact) · Legal (Terms of Use, Privacy Policy, Terms and Conditions) · social icons · bottom note. This is the **only** place the merchant page is linked.
+- **Footer audience:** on `/merchants/` and `/legal/merchant-*` the footer shows the merchant legal documents and a "Get the app" link; elsewhere it shows the customer documents (`src/content/site.ts`).
+- **Mobile:** all text is centred; the header logo is centred and larger; social icons sit after the legal links.
 
 ## Quick start
 
 ```bash
 npm install
-cp .env.example .env.local     # optional; defaults work for local dev
+cp .env.example .env.local     # optional; defaults work locally
 npm run dev                    # http://localhost:3000
 ```
 
@@ -37,157 +39,139 @@ Requires Node 20+.
 | `npm run dev` | Prepares content (below), then starts the dev server |
 | `npm run build` | Prepares content, then builds the static site into `out/` |
 | `npm start` | Serves `out/` locally (`npx serve out`) |
-| `npm run lint` | ESLint |
-| `npm run typecheck` | `tsc --noEmit` |
-| `npm run check:copy` | Fails if banned language appears in site source (see "Content rules") |
-| `npm run check:copy:built` | Same check on the built HTML of every non-legal page (text, meta, alt, aria-labels) |
-| `npm run audit:layout` | Finds clipped graphics and horizontal scroll at 6 viewport sizes with all tilts at maximum (needs Chrome; serve `out/` on :4123 first, or set `AUDIT_URL`) |
+| `npm run lint` / `typecheck` | ESLint / `tsc --noEmit` |
+| `npm run check:copy` | Fails if banned language is in the site source (see "Content rules") |
+| `npm run check:copy:built` | Same, on the built HTML of every non-legal page (text, meta, alt, aria-labels) |
+| `npm run audit:layout` | Finds clipped graphics and sideways scrolling at 6 screen sizes with all tilts at maximum. Needs Chrome; serve `out/` on :4123 first, or set `AUDIT_URL` |
 | `npm run verify` | lint + typecheck + check:copy + build + check:copy:built |
 
 `dev` and `build` first run `npm run prepare-content`:
 
-1. `scripts/copy-assets.mjs` copies `website-assets/*` (except `_unused/`) to `public/assets/`, writes the favicon and `site.webmanifest`.
-2. `scripts/optimize-images.mjs` creates `.webp` versions of the screenshots and logos with `sharp`.
-3. `scripts/convert-legal.mjs` converts the six legal `.docx` files in the project root into `src/content/legal/generated/*.json`. **The text is kept verbatim.** Only numbered bold paragraphs become headings, for anchors and the table of contents.
-4. `scripts/check-social.mjs` warns about footer social links that are still placeholders (see "Social links").
-
-`copy-assets` never publishes the five screenshots that contain banned wording (`EXCLUDED` list in the script).
+1. `scripts/copy-assets.mjs`: copies `website-assets/*` (except `_unused/`) to `public/assets/`. Screenshots get their baked-in white side margins trimmed, and their final sizes are written to `src/config/generated/screenshots.json`. Screenshots listed in `EXCLUDED` are never published.
+2. `scripts/optimize-images.mjs`: screenshots become compressed WebP (900 px and 600 px wide) and the PNG copies are removed. Logos keep their PNG plus a WebP twin.
+3. `scripts/convert-legal.mjs`: converts the six `.docx` files in the project root into `src/content/legal/generated/*.json`. **The text is kept verbatim.**
+4. `scripts/check-social.mjs`: warns if a footer social URL is missing or invalid.
 
 `public/assets/` is generated and gitignored. `website-assets/` is the source.
 
-## Deploying (TODO: lead dev)
+## Deploying
 
-`npm run build` produces `out/`. Upload it to any static host.
+`npm run build` produces `out/`.
 
-- `trailingSlash: true` is set, so every route is a folder with an `index.html` (e.g. `out/merchants/join/index.html`). On S3 + CloudFront, use a CloudFront Function or the S3 website endpoint so `/merchants/join/` resolves to `index.html`.
-- `out/404.html` is the not-found page.
-- Set `NEXT_PUBLIC_*` variables **at build time**, because they are baked into the static files.
+- **Vercel:** import the GitHub repo and leave the defaults. Add the environment variables below, then redeploy.
+- **S3 + CloudFront:** `trailingSlash: true` is set, so each route is a folder with an `index.html`; make `/merchants/` resolve to its `index.html`. `out/404.html` is the not-found page.
+- Set `NEXT_PUBLIC_*` variables **at build time**.
 
 ## Environment variables
 
-See `.env.example`. All of them are public.
+See `.env.example`. All are public and need a redeploy to change.
 
 | Variable | Purpose |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | Canonical URL for sitemap, robots and Open Graph |
-| `NEXT_PUBLIC_LEAD_ENDPOINT` | POST endpoint for the merchant contact form on `/merchants/` (backend is **TODO(lead-dev)**) |
-| `NEXT_PUBLIC_SELLER_PLAY_STORE_URL` | Seller App Google Play URL. The default is a placeholder (TODO) |
-| `NEXT_PUBLIC_PLAY_STORE_URL` | Buyer App Google Play URL. The default is a placeholder package id (TODO) |
-| `NEXT_PUBLIC_APP_STORE_URL` | Leave empty until iOS is live. Empty renders "Coming soon on iOS" |
+| `NEXT_PUBLIC_SITE_URL` | Real domain, for sitemap, robots, canonical links and Open Graph |
+| `NEXT_PUBLIC_LEAD_ENDPOINT` | Address that receives merchant form entries (**TODO(lead-dev)**) |
+| `NEXT_PUBLIC_PLAY_STORE_URL` | Customer app on Google Play. The QR code is generated from it. Default is a placeholder id |
+| `NEXT_PUBLIC_SELLER_PLAY_STORE_URL` | Seller App on Google Play. Default is a placeholder |
+| `NEXT_PUBLIC_APP_STORE_URL` | Empty until iOS is live; then "Coming soon to iOS" becomes a link |
 | `NEXT_PUBLIC_ANALYTICS_ID` | Unused. Analytics is intentionally not added |
 
 ## Where things live
 
 ```
-src/config/app.ts        APP_LINKS (store URLs, sample flag), SITE, LEAD_ENDPOINT, SCREENSHOTS, LOGO
-src/config/motion.ts     The motion system: durations, easing, stagger, tilt limits (one place)
-src/config/social.ts     Footer social profile URLs (TODO(founder): paste real links)
-src/content/             All copy: site.ts (nav/footer), customer.ts, merchant.ts, faq.ts, trust.ts
-                         (Fair by design, each fact cited), bothSides.ts (one scan, two sides),
-                         loyalty.ts (example milestones, offers, categories), legal/meta.ts
-src/styles/theme.css     Design tokens, 1:1 with DESIGN.md (colours, type scale, radii, card)
-src/app/                 One folder per route
-src/components/          Nav, AudienceToggle, DownloadBlock, PhoneMockup, FeatureCard, StepList,
-                         MilestoneList, OfferCard, FAQAccordion, LeadForm, Footer, CTABand, …
-src/components/Phone3D   CSS 3D stage: pointer tilt, scroll rotation, screen crossfade, parallax layers
-src/components/HeroVisual  Landing hero: entrance sequence, unlock moment, 3D orbit of reward icons
-src/components/HowItWorks  Four steps with animated illustrations (no app screens)
-public/brand/            Official LinkedIn "In" mark (used as a CSS mask in the footer)
-scripts/                 Content preparation, copy checker, social check, layout audit
+src/config/app.ts         Store links, SITE (email, company), form endpoint, SCREENSHOTS, logos, badges
+src/config/motion.ts      The motion system: durations, easing, stagger, tilt limits
+src/config/social.ts      The four footer social URLs (edit here)
+src/config/generated/     Screenshot sizes (generated, do not edit)
+src/content/              ALL copy: customer.ts (home), about.ts, faq.ts, merchant.ts,
+                          howItWorks.ts, loyalty.ts, site.ts (footer/legal links), legal/meta.ts
+src/styles/theme.css      Design tokens, 1:1 with DESIGN.md
+src/app/                  Routes (page.tsx per folder), error.tsx, global-error.tsx, not-found.tsx
+src/components/           HeroVisual (landing hero animation), HowItWorks (animated steps, customer and
+                          merchant variants), MilestoneExplorer (reward journey), Phone3D / PhoneMockup,
+                          DownloadBlock, StoreBadges, LeadForm, Footer, Nav, OfflineNotice, SafeImage, …
+public/brand/             Official Google Play badge, LinkedIn "In" mark (footer icon mask)
+scripts/                  Content preparation, copy checks, social check, layout audit
+videos/                   Launch videos (buyer, merchants), not used by the site
+docs/DECISIONS.md         Decisions made since the original brief
 ```
 
 ### Change copy
 
-Edit the files in `src/content/`. The components contain no marketing copy.
+Edit the files in `src/content/`. Components hold no marketing copy.
 
 ### Swap a screenshot
 
-Either replace the file in `website-assets/` with the same name, or point the slot at a new file in `SCREENSHOTS` (`src/config/app.ts`). Every page and the 3D phones read from there. The phone frame takes the screenshot's own shape, so screenshots are never cropped (`object-fit: contain`; the copy checker fails on `object-cover`). Partial screenshots (Discover, Offers) are shown as screen cards, not full phones.
+Replace the file in `website-assets/` (same name) and rebuild; margins are trimmed and WebP files made automatically. New slots are added to `SCREENSHOTS` in `src/config/app.ts`.
 
-Only **clean original screenshots** are used (founder decision): no made-up screens. Six originals stay unpublished until corrected versions arrive, because they show banned wording, a location or a sample phone number: buyer-01, buyer-02, buyer-03, buyer-05, seller-01, seller-05b (`EXCLUDED` in `scripts/copy-assets.mjs`). When a corrected file arrives, drop it from `EXCLUDED` and add a slot to `SCREENSHOTS`. `copy-assets` also trims baked-in white margins from every screenshot (they showed as blank bars in the phone frames) and records the final sizes in `src/config/generated/screenshots.json`.
+Only **clean original screenshots** are used; there are no made-up screens. Seven originals are held back (`EXCLUDED` in `scripts/copy-assets.mjs`) because they show banned wording, a location, a person's name or a sample phone number: buyer-01, buyer-02, buyer-03, buyer-04, buyer-05, seller-01, seller-05b. When a corrected file arrives, remove it from `EXCLUDED` and add a slot. Frames follow each screenshot's own shape, so nothing is cropped (`object-fit: contain`; the copy checker fails on `object-cover`).
 
 ### Update legal text
 
-Replace the `.docx` in the project root (same filename) and run `npm run prepare-content`. When the founder resolves an open item, delete its flag from `src/content/legal/meta.ts`. The "Pending founder review" notice disappears when no flags are left.
-
-### Go live
-
-1. Set `NEXT_PUBLIC_PLAY_STORE_URL` to the real listing. The QR code is generated from it.
-2. The Google Play badge is the official artwork (`public/brand/`). iOS shows the text "Coming soon to iOS"; set `NEXT_PUBLIC_APP_STORE_URL` at iOS launch and it becomes a "Download for iOS" link (add Apple's official badge then). Set `NEXT_PUBLIC_SELLER_PLAY_STORE_URL` for the merchant page.
-3. Send corrected screenshots for the six unpublished screens (see "Swap a screenshot").
-4. Set `(no sample markers to switch off)`.
-5. Connect the lead form endpoint.
-6. Resolve the legal open items (below).
+Replace the `.docx` in the project root (same filename) and run `npm run prepare-content`. When an open item is resolved, delete its flag in `src/content/legal/meta.ts`.
 
 ## Motion, 3D and accessibility
 
-- **One motion system** in `src/config/motion.ts`: 400 / 550 / 700 ms, one ease-out curve with no overshoot, 60 ms stagger. No springs that bounce, no loops, no autoplay. Pointer smoothing is critically damped.
-- **3D is CSS only** (perspective transforms, plus isometric SVG for the gift boxes), built from the DESIGN.md palette. No WebGL, so there is no canvas to clip, no off-palette shading, and no 3D library in the bundle.
-  - Phones (`Phone3D`): pointer tilt up to 6° on desktop; up to 8° of rotation as they scroll through the viewport on every device; screens crossfade at the midpoint.
-  - Cards (`Tilt3D`): 5° tilt and a 4 px lift on hover, desktop only. Touch devices stay flat with a tap state.
-  - Reward journey (`MilestoneExplorer`): a CSS 3D tilted track; gift boxes are isometric SVG (identical in Safari, Chrome and Firefox) that unlock with a soft glow as you scroll; vertical on phones. Cards sit in a flat overlay positioned with the same perspective maths as the track, because WebKit flattens text nested inside 3D transforms.
-  - "One scan, two sides" (`BothSides`) and merchant steps (`PhoneSteps`): pinned and scroll-driven on large screens (≥1024 px wide and ≥720 px tall); step cards with their own screens everywhere else.
-- **Motion tiers** (`useMotionTier`): reduced motion gets short fades only; low-end devices (≤ 4 cores on touch, ≤ 2 GB memory, or Data Saver) get no continuous scroll-linked 3D. Force a tier with `?motion=reduced|lite|full`; `?motion=extreme` pins every tilt at its maximum for audits.
-- **Never clip product graphics**: containers clip only a separate `aria-hidden pointer-events-none` decoration layer; tilted elements sit in padded stages. `npm run audit:layout` checks this.
-- **Mobile**: 44 px minimum tap targets, no hover-only content, `svh` units instead of `100vh`, `viewport-fit=cover` with safe-area padding, `overflow-x: clip` (keeps `position: sticky` working on iOS).
-- Page transitions are a 400 ms fade on client navigations only (never on first load).
+- **One motion system** in `src/config/motion.ts`: 400 / 550 / 700 ms, one ease-out curve with no overshoot, 60 ms stagger. No bouncy springs and no autoplay.
+- **CSS-only 3D** from the DESIGN.md palette. No WebGL, so there is no canvas to clip and no 3D library in the bundle.
+  - **Hero (`HeroVisual`):** entrance sequence (phone swings in, sheen, progress ring fills, reward card unlocks), then a slow 3D orbit of reward icons.
+  - **Phones (`Phone3D`):** pointer tilt up to 6° on desktop, up to 8° of scroll rotation on every device.
+  - **Cards (`Tilt3D`):** 5° tilt and a small lift on hover, desktop only; flat on touch.
+  - **How it works (`HowItWorks`):** pinned and scroll-driven on large screens (≥1024 px wide and ≥720 px tall), stacked cards elsewhere. Four animated illustrations per variant (customer: pay, QR, progress, unlock; merchant: set up, broadcast offers, scan and enter, come back).
+  - **Reward journey (`MilestoneExplorer`):** tilted track; isometric SVG gift boxes unlock as you scroll; vertical on phones.
+- **Motion tiers** (`useMotionTier`): reduced motion gets short fades only; low-end devices get no continuous scroll-linked 3D. Force a tier with `?motion=reduced|lite|full`; `?motion=extreme` pins every tilt at its maximum for audits.
+- **Never clip product graphics:** containers clip only a separate decorative layer. `npm run audit:layout` checks this.
+- **Mobile:** 44 px tap targets, `svh` units, `viewport-fit=cover` with safe-area padding, `overflow-x: clip`.
+- **Failure states:** custom 404 · `error.tsx` and `global-error.tsx` for unexpected errors · red offline bar at the top of the screen · `SafeImage` placeholder if an image fails · form field and send errors.
 - Decorative motion is `aria-hidden`; pinned scenes announce the current step in a polite live region.
 
 ## Social links
 
-`src/config/social.ts` holds the four profile URLs (Facebook, Instagram, LinkedIn, X), all empty with `TODO(founder)`.
+`src/config/social.ts` holds the four profile URLs (Facebook, Instagram, LinkedIn, X). Each must be `https` on that platform's own domain. Invalid or empty URLs are hidden in production (never a `#` link) and listed as a warning at build time. Links open in a new tab with `rel="noopener noreferrer"`. Icons are single-colour (navy, blue on hover). Facebook, Instagram and X are Simple Icons (CC0); LinkedIn is the official "In" mark from LinkedIn's brand site, used as a CSS mask.
 
-- A URL counts only if it is `https` on that platform's own domain.
-- **Development** (`npm run dev`): placeholders show the icon with a dashed outline and a "Dev only" note. They are not links.
-- **Production** (`npm run build`): placeholders are not rendered at all (never a `#` link). With none set, the "Follow Puraskrit" row disappears. The build prints a warning listing what is missing.
-- Real links open in a new tab with `rel="noopener noreferrer"` and an accessible name such as "Puraskrit on Instagram". Icons are single colour: navy, blue on hover or focus.
-- Icon sources: Facebook, Instagram and X from Simple Icons (CC0). LinkedIn is the official "In" mark from LinkedIn's brand site (`public/brand/`), used as a CSS mask. Note: the platforms' brand guidelines prefer black, white or their own brand colour; navy and blue were chosen to match DESIGN.md.
+## Content rules (enforced by `check:copy` and `check:copy:built`)
 
-## Content rules (enforced by `npm run check:copy` and `check:copy:built`)
+Customers read the merchant page too, so every word must be safe for both audiences.
 
-From the context file and the finishing pass. No invented numbers, testimonials or pricing. Customers read the merchant pages too, so every word must be safe for both audiences.
+- Milestones always say **"Unlocks at ₹X"**. Never "spend", "spent", "spending", "more to go" or "₹X more".
+- No urgency, scarcity or pressure wording; no business-speak aimed at customers; no points, NFC, payment or UPI claims.
+- No location claims ("Bengaluru", "Bangalore", "Electronic City") anywhere on the site. Legal documents are verbatim and exempt.
+- Don't pitch "free". Customers should feel empowered, not sympathised with.
+- No "SAMPLE"/"Example" placeholders and no made-up app screens.
+- Customer pages never show merchant-side wording ("Seller App", "commission", "your customers"). Only the footer links to `/merchants/`.
+- Gentle game only: no randomness, countdowns, streak penalties, "losing progress" messages or comparisons.
+- The six legal pages are excluded from these checks.
 
-- Milestones always say **"Unlocks at ₹X"**. Never "spend", "spent", "spending", "more to go", or "₹X more".
-- No urgency, scarcity or pressure: no "hurry", "limited time", "don't miss out", "only X left", "hook", "lock-in", "trap", "free money", "cheap".
-- No business-speak aimed at customers: no "footfall", "sales", "revenue", "boost your numbers".
-- No points system, NFC, payments/UPI/POS/CRM claims, or security claims as marketing.
-- Never mention "My Services".
-- No location claims (no "Bengaluru", "Bangalore", "Electronic City"). The footer company address is the only exception.
-- Don't pitch "free": customers should feel empowered, not sympathised with.
-- No "SAMPLE"/"Example" placeholders or made-up screens on the site.
-- Customer pages never show merchant-side wording ("Seller App", "commission", "your customers"…). The built-page check also fails if anything outside the footer links to `/merchants/`.
-- Gentle game only: milestones as a path, rewards you unlock. No randomness, countdowns, streak penalties, "losing progress" messages, comparisons or leaderboards.
-- The six legal pages are verbatim and excluded from these checks.
+## Merchant form
 
-## Lead form
-
-`src/components/LeadForm.tsx` POSTs JSON to `NEXT_PUBLIC_LEAD_ENDPOINT`:
+`src/components/LeadForm.tsx` (the "Let's talk" form on `/merchants/`) POSTs JSON to `NEXT_PUBLIC_LEAD_ENDPOINT` and expects any 2xx reply for success.
 
 ```json
 { "businessName": "", "name": "", "mobile": "+91XXXXXXXXXX", "email": "", "category": "",
-  "locality": "", "city": "Bengaluru", "message": "", "consent": true,
+  "locality": "", "city": "", "message": "", "consent": true,
   "submittedAt": "ISO-8601", "source": "website:/merchants/join" }
 ```
 
-- With no endpoint, dev builds log the payload and show success. Production builds show a "not connected" message.
-- There is a honeypot field (`website`). Server-side validation, spam protection, storage and notification are **TODO(lead-dev)**.
-- Do not add GSTIN or bank fields. Those belong to formal onboarding.
+- **Not connected yet.** With no endpoint, dev builds log the entry and show success; production builds show "This form isn't connected yet. Please email support@puraskrit.com."
+- **Client side:** field validation, consent checkbox (unchecked by default), hidden spam-trap field, and an animated success message that promises contact within 24 hours.
+- **TODO(lead-dev), backend:** accept the POST, store the entry, ignore entries where the hidden `website` field is filled, rate-limit, notify the team (the 24-hour promise depends on it), and allow the site's origin (CORS). Quick options without a backend: Formspree/Getform, a Google Sheet Apps Script, or Supabase.
+- Do not add GSTIN or bank fields; those belong to formal onboarding.
 
 ## TODO markers
 
-`grep -rn "TODO(" src scripts` lists every integration point:
+`grep -rn "TODO(" src scripts` lists them:
 
-- `TODO(lead-dev)`: lead-form backend, hosting/domain, analytics with a consent banner (default decline), official store badges, staging robots.
-- `TODO(founder)`: onboarding wording, the offer discount figure (30% vs 25%), About copy.
+- `TODO(lead-dev)`: merchant form backend, domain and `NEXT_PUBLIC_SITE_URL`, analytics with a consent banner, error reporting.
+- `TODO(founder)`: real store URLs at launch, corrected screenshots for the held-back screens.
 
-## Open items before launch (context file §10)
+## Open items before launch
 
-| # | Item | Where it shows |
-|---|---|---|
-| 1 | Merchant T&C §12.1 plan names and amounts are placeholders | Flag on `/legal/merchant-terms` |
-| 2 | Effective dates differ (10/03/2026 vs 10/08/2026); date format unconfirmed | Flag on all legal pages |
-| 3 | Grievance Officer "Designation" repeats the name | Flag on both privacy pages and `/contact` |
-| 5 | Security claims (AES-256, ISO 27001) appear only inside the verbatim privacy text | Not used as marketing |
-| 8 | Play Store URL is a sample | `APP_LINKS.playStoreUrl` |
-| 9 | Brand spelling: wordmark पुरSkrit (always the logo image), running text "Puraskrit" | Convention applied |
-| — | True vector logo SVG not supplied | PNG logo with `srcset` |
+| Item | Where |
+|---|---|
+| Merchant T&C §12.1 plan names and amounts are placeholders | Flag on `/legal/merchant-terms` |
+| Effective dates differ across the legal documents (10/03/2026 vs 10/08/2026); date format unconfirmed | Flag on all legal pages |
+| Grievance Officer "Designation" repeats the name | Flag on both privacy pages |
+| Footer note names "Puraskrit Ltd" while the legal documents name Asraubh Private Limited | Confirm the legal entity |
+| Footer note mentions a Terms of Service, Cookie Policy and Content Policies that don't exist as pages | Add pages or reword |
+| Store URLs are placeholders | `NEXT_PUBLIC_PLAY_STORE_URL`, `NEXT_PUBLIC_SELLER_PLAY_STORE_URL` |
+| Merchant form has no backend | `NEXT_PUBLIC_LEAD_ENDPOINT` |
+| True vector logo SVG not supplied | PNG logo with `srcset` |

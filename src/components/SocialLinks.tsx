@@ -51,7 +51,7 @@ export function SocialLinks() {
   return (
     <div>
       <h2 className="text-overline mb-2 text-muted">Follow Puraskrit</h2>
-      <ul className="-ml-2.5 flex flex-wrap items-center gap-1.5">
+      <ul className="-ml-2.5 flex flex-wrap items-center gap-1.5 max-md:ml-0 max-md:justify-center">
         {items.map((s) => (
           <li key={s.platform}>
             {s.ok ? (

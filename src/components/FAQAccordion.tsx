@@ -25,7 +25,7 @@ export function FAQAccordion({ items }: { items: FAQ[] }) {
                 aria-expanded={isOpen}
                 aria-controls={panel}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-6 text-left font-headline text-headline-sm transition-colors hover:bg-surface md:px-7"
+                className="flex w-full items-center justify-between gap-4 px-5 py-6 text-left max-md:text-center font-headline text-headline-sm transition-colors hover:bg-surface md:px-7"
               >
                 {f.q}
                 <span
@@ -49,7 +49,7 @@ export function FAQAccordion({ items }: { items: FAQ[] }) {
                   transition={{ duration: reduce ? DURATION.reduced : DURATION.fast, ease: EASE_OUT }}
                   className="overflow-hidden"
                 >
-                  <div className="px-5 pb-6 text-[18px] leading-[28px] text-muted md:px-7">
+                  <div className="px-5 pb-6 text-[18px] leading-[28px] text-muted max-md:text-center md:px-7">
                     <p>{f.a}</p>
                   </div>
                 </motion.div>

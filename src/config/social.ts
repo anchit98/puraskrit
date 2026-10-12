@@ -1,8 +1,7 @@
 /**
  * Puraskrit social profiles, shown in the footer on every page.
  *
- * TODO(founder): each URL below is the platform's home page as a placeholder. Replace it with
- * the real Puraskrit profile URL (e.g. https://www.instagram.com/<handle>).
+ * Real Puraskrit profile URLs (supplied by the founder, Oct 2026). Edit here to change them.
  * - Development builds: an empty or invalid URL shows the icon with a dashed "URL needed" marker
  *   and is not a link.
  * - Production builds: an empty or invalid URL is hidden (never a "#" link). If none are set,
@@ -14,14 +13,10 @@
 export type SocialPlatform = "facebook" | "instagram" | "linkedin" | "x";
 
 export const SOCIAL_LINKS: { platform: SocialPlatform; name: string; url: string; hosts: string[] }[] = [
-  // TODO(founder): Facebook page URL, e.g. https://www.facebook.com/<page>
-  { platform: "facebook", name: "Facebook", url: "https://www.facebook.com/", hosts: ["facebook.com", "www.facebook.com"] },
-  // TODO(founder): Instagram profile URL, e.g. https://www.instagram.com/<handle>
-  { platform: "instagram", name: "Instagram", url: "https://www.instagram.com/", hosts: ["instagram.com", "www.instagram.com"] },
-  // TODO(founder): LinkedIn company page URL, e.g. https://www.linkedin.com/company/<page>
-  { platform: "linkedin", name: "LinkedIn", url: "https://www.linkedin.com/", hosts: ["linkedin.com", "www.linkedin.com"] },
-  // TODO(founder): X profile URL, e.g. https://x.com/<handle>
-  { platform: "x", name: "X", url: "https://x.com/", hosts: ["x.com", "www.x.com", "twitter.com", "www.twitter.com"] },
+  { platform: "facebook", name: "Facebook", url: "https://www.facebook.com/share/14wBDWXpogt/?mibextid=wwXIfr", hosts: ["facebook.com", "www.facebook.com"] },
+  { platform: "instagram", name: "Instagram", url: "https://www.instagram.com/puraskrit.in/", hosts: ["instagram.com", "www.instagram.com"] },
+  { platform: "linkedin", name: "LinkedIn", url: "https://www.linkedin.com/company/puraskrit/", hosts: ["linkedin.com", "www.linkedin.com"] },
+  { platform: "x", name: "X", url: "https://x.com/puraskritindia", hosts: ["x.com", "www.x.com", "twitter.com", "www.twitter.com"] },
 ];
 
 export function isValidSocialUrl(url: string, hosts: string[]) {

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent, type ReactNode } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { LEAD_ENDPOINT } from "@/config/app";
 import { ALL_CATEGORIES } from "@/content/loyalty";
 import { Icon } from "./Icon";
@@ -127,22 +127,7 @@ export function LeadForm() {
     }
   }
 
-  if (status === "success") {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="card flex flex-col items-center p-10 text-center"
-        role="status"
-      >
-        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-accent-green/10 text-accent-green">
-          <Icon name="check" size={32} />
-        </span>
-        <h2 className="text-headline-md mt-5">Thanks. We&apos;ll be in touch.</h2>
-        <p className="mt-2 text-body-md text-muted">Questions in the meantime? support@puraskrit.com</p>
-      </motion.div>
-    );
-  }
+  if (status === "success") return <SuccessCard name={values.name.trim().split(" ")[0]} />;
 
   const err = (k: keyof Values) => (touched[k] ? errors[k] : undefined);
 
@@ -280,5 +265,87 @@ function ErrorText({ id, error }: { id: string; error?: string }) {
     <p id={`lead-${id}-error`} className={`mt-1.5 text-body-sm text-error ${error ? "" : "hidden"}`} aria-live="polite">
       {error}
     </p>
+  );
+}
+
+/** Animated confirmation: ring pulse, drawn tick, sparkles (palette only), then the message. */
+function SuccessCard({ name }: { name: string }) {
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // Bring the confirmation into view (the form above it was taller).
+    ref.current?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  }, [reduce]);
+  const d = (n: number) => (reduce ? 0 : n);
+  return (
+    <motion.div
+      ref={ref}
+      role="status"
+      aria-live="polite"
+      initial={{ opacity: 0, y: reduce ? 0 : 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: d(0.5), ease: [0.22, 1, 0.36, 1] }}
+      className="card relative flex flex-col items-center px-6 py-12 text-center md:px-10"
+    >
+      <div className="relative flex h-28 w-28 items-center justify-center">
+        {[0, 1].map((r) => (
+          <motion.span
+            key={r}
+            aria-hidden
+            className="absolute inset-0 rounded-full border-2 border-primary/30"
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1.5, opacity: [0, 0.7, 0] }}
+            transition={{ duration: d(1.4), delay: d(0.2 + r * 0.35), ease: "easeOut" }}
+          />
+        ))}
+        <motion.span
+          className="relative flex h-20 w-20 items-center justify-center rounded-full bg-primary text-on-primary shadow-[0_14px_34px_rgba(37,99,235,0.35)]"
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: d(0.5), ease: [0.22, 1, 0.36, 1] }}
+        >
+          <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <motion.path
+              d="m5 12.5 4.5 4.5L19 7.5"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: d(0.5), delay: d(0.35), ease: "easeOut" }}
+            />
+          </svg>
+        </motion.span>
+        {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+          <motion.span
+            key={deg}
+            aria-hidden
+            className="absolute left-1/2 top-1/2 -ml-[3px] -mt-[3px] h-1.5 w-1.5 rounded-full"
+            style={{ background: i % 2 ? "#DBEAFE" : "#2563EB" }}
+            initial={{ x: 0, y: 0, opacity: 0, scale: 0.4 }}
+            animate={{
+              x: Math.cos((deg * Math.PI) / 180) * 62,
+              y: Math.sin((deg * Math.PI) / 180) * 62,
+              opacity: [0, 1, 0],
+              scale: [0.4, 1, 0.5],
+            }}
+            transition={{ duration: d(0.9), delay: d(0.7), ease: "easeOut" }}
+          />
+        ))}
+      </div>
+      <motion.h2
+        className="text-headline-md mt-6"
+        initial={{ opacity: 0, y: reduce ? 0 : 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: d(0.5), delay: d(0.8), ease: [0.22, 1, 0.36, 1] }}
+      >
+        {name ? `Thank you, ${name}!` : "Thank you!"}
+      </motion.h2>
+      <motion.p
+        className="mt-2 max-w-sm text-body-lg text-muted"
+        initial={{ opacity: 0, y: reduce ? 0 : 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: d(0.5), delay: d(0.95), ease: [0.22, 1, 0.36, 1] }}
+      >
+        We&apos;ve received your details. Our team will contact you within 24 hours.
+      </motion.p>
+    </motion.div>
   );
 }

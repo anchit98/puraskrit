@@ -79,7 +79,7 @@ export function HeroVisual({ audience = "customer" }: { audience?: "customer" | 
           <motion.div
             animate={ambient && !extreme ? { y: [0, -8, 0] } : undefined}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
-            className="relative mx-auto max-w-[240px] sm:max-w-[270px]"
+            className="relative mx-auto max-w-[290px] sm:max-w-[270px]"
           >
             <PhoneMockup screens={[{ shot: customer ? "buyerLanding" : "sellerPreviewMilestones" }]} priority />
             {!still && (

@@ -9,7 +9,7 @@ export function CategoryChips({ limit = 7 }: { limit?: number }) {
   const reduce = useReducedMotion();
   const all = [...PRIMARY_CATEGORIES.map((c) => ({ c, primary: true })), ...OTHER_CATEGORIES.slice(0, limit).map((c) => ({ c, primary: false }))];
   return (
-    <ul className="flex flex-wrap gap-2.5" aria-label="Business categories">
+    <ul className="flex flex-wrap gap-2.5 max-md:justify-center" aria-label="Business categories">
       {all.map(({ c, primary }, i) => (
         <motion.li
           key={c}

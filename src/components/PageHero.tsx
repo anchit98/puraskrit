@@ -9,7 +9,7 @@ export function PageHero({ overline, title, body, children, aside }: { overline?
         <div className="bg-grid absolute inset-0 opacity-50" />
       </div>
       <div className={`container-page relative grid items-center gap-10 ${aside ? "lg:grid-cols-[1.1fr_0.9fr]" : ""}`}>
-        <Reveal className="max-w-2xl">
+        <Reveal className="max-w-2xl max-md:mx-auto max-md:text-center">
           {overline && <p className="text-overline mb-4 text-primary">{overline}</p>}
           <h1 className="text-display">{title}</h1>
           {body && <div className="mt-5 text-body-lg text-muted md:text-[18px] md:leading-[28px]">{body}</div>}

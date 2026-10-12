@@ -71,7 +71,7 @@ export function MilestoneExplorer() {
       </div>
       <div className="card relative grid gap-0 lg:grid-cols-[320px_1fr]">
         {/* Readout */}
-        <div className="border-b border-outline p-6 md:p-8 lg:border-b-0 lg:border-r">
+        <div className="border-b border-outline p-6 max-md:text-center md:p-8 lg:border-b-0 lg:border-r">
           <div className="flex items-center justify-between">
             <p className="text-overline text-muted">{copy.readoutOverline}</p>
           </div>
@@ -111,13 +111,13 @@ export function MilestoneExplorer() {
               const seg = Math.max(0, Math.min(1, (amount - prev) / (m.unlocksAt - prev)));
               const on = amount >= m.unlocksAt;
               return (
-                <li key={m.label} className="grid grid-cols-[64px_1fr] gap-3">
+                <li key={m.label} className="grid grid-cols-[84px_1fr] gap-3">
                   <div className="flex flex-col items-center">
-                    <div className="relative h-8 w-1.5 overflow-hidden rounded-full bg-primary-container">
+                    <div className="relative h-10 w-2 overflow-hidden rounded-full bg-primary-container">
                       <div className="absolute inset-x-0 top-0 rounded-full bg-primary" style={{ height: `${seg * 100}%` }} />
                     </div>
                     <div className="py-2">
-                      <GiftBox size={34} unlocked={on} animate={animate} />
+                      <GiftBox size={46} unlocked={on} animate={animate} />
                     </div>
                   </div>
                   <div className="pt-6">
@@ -138,7 +138,7 @@ function MilestoneCard({ m, on, onClick, compact = false }: { m: (typeof M)[numb
     <button
       type="button"
       onClick={onClick}
-      className={`block min-h-11 rounded-[16px] border bg-card p-3 text-left shadow-[0_12px_30px_rgba(26,43,74,0.1)] transition-[border-color,box-shadow,transform] duration-[550ms] ease-out ${
+      className={`block min-h-11 rounded-[16px] border bg-card p-3 text-left max-md:text-center shadow-[0_12px_30px_rgba(26,43,74,0.1)] transition-[border-color,box-shadow,transform] duration-[550ms] ease-out ${
         compact ? "w-[176px]" : "w-full"
       } ${on ? "border-primary/40 ring-4 ring-primary/10" : "border-outline"}`}
     >

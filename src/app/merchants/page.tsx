@@ -10,11 +10,14 @@ import { LeadForm } from "@/components/LeadForm";
 import { Reveal } from "@/components/Reveal";
 import { StoreBadges } from "@/components/StoreBadges";
 
-export const metadata = pageMeta({
+export const metadata = {
+  ...pageMeta({
   title: "Puraskrit Merchants: partner with us",
   description: "Bring your regulars back and turn new faces into regulars, with rewards your customers can see. Run it from your phone.",
   path: "/merchants/",
-});
+  }),
+  title: { absolute: "Puraskrit Merchants" }, // browser tab title
+};
 
 export default function MerchantsPage() {
   return (

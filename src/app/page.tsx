@@ -19,7 +19,7 @@ export const metadata = {
     description: "Every visit to the places around you now counts. Discover places, track your progress and unlock rewards with Puraskrit.",
     path: "/",
   }),
-  title: { absolute: `Puraskrit | ${HOME_HERO.title}` },
+  title: { absolute: "Puraskrit" }, // browser tab title
 };
 
 export default function HomePage() {
